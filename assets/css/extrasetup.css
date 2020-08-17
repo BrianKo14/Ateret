@@ -1,0 +1,37 @@
+#titleLogo {
+    padding-bottom: 150px;
+    width: 600px;
+}
+
+#smallLogo {
+    box-shadow: none !important;
+}
+
+#boldSpecial1 {
+    /*color: #158da5 !important;*/
+    font-size: 25px;
+    font-family: 'Sedgwick Ave', cursive;
+}
+
+#boldSpecial2 {
+    color: #158da5 !important;
+    text-shadow: 0.5px 0.5px rgb(92, 92, 92);
+}
+
+.column {
+    float: left;
+    width: 50%;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+#pSpecial1 {
+    font-size: 15px;
+    text-align: left;
+    padding-bottom: 30px;
+}
