@@ -48,3 +48,7 @@
 h2 {
     text-align: center !important;
 }
+
+#messageSent {
+    opacity: 0;
+}
