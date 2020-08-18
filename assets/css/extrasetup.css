@@ -15,7 +15,8 @@
 
 #boldSpecial2 {
     color: #158da5 !important;
-    text-shadow: 0.5px 0.5px rgb(92, 92, 92);
+    /*text-shadow: 0.5px 0.5px rgb(92, 92, 92);*/
+    font-family: 'Roboto' sans-serif  !important;
 }
 
 .column {
@@ -27,11 +28,23 @@
   .row:after {
     content: "";
     display: table;
-    clear: both;
+    clear: both;   
   }
 
 #pSpecial1 {
-    font-size: 15px;
+    font-size: 14px;
     text-align: left;
-    padding-bottom: 30px;
+    padding-top: 5px;
+    font-family: 'Roboto', sans-serif !important;
+}
+
+#aboutus {
+    font-size: 13px;
+    letter-spacing: 0px;
+    line-height: 20px;
+    font-family: 'Roboto', sans-serif !important;
+}
+
+h2 {
+    text-align: center !important;
 }
