@@ -1,0 +1,23 @@
+{
+  "name": "ateret",
+  "version": "1.0.0",
+  "description": "Original site: http://www.ateret.com.ar/web/   New site: https://brianko14.github.io/Ateret/",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BrianKo14/Ateret.git"
+  },
+  "author": "Brian Kovo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BrianKo14/Ateret/issues"
+  },
+  "homepage": "https://github.com/BrianKo14/Ateret#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemailer": "^6.4.11"
+  }
+}
