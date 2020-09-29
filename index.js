@@ -5,7 +5,7 @@ app.use(express.json());
 const nodemailer = require('nodemailer');
 
 // Server static files
-app.listen(3000, () => {
+app.listen(process.env.PORT | 3000, () => {
     app.use(express.static('public'));
 });
 
@@ -23,14 +23,14 @@ function sendEmail(email, name, message) {
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-          user: 'briankov14@gmail.com', // Move to .env
-          pass: 'rgryvivlwbxsbftb' // Move to .env
+          user: process.env.MAIL_FROM,
+          pass: process.env.MAIL_PASSWORD
         }
     });
       
     var mailOptions = {
     from: email,
-    to: 'briankov14@gmail.com', // Move to .env
+    to: process.env.MAIL_TO,
     subject: `Mensaje de ${name}`,
     text: `${message}`
     };
