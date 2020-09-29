@@ -29,10 +29,10 @@ function sendEmail(email, name, message) {
     });
       
     var mailOptions = {
-    from: email,
-    to: process.env.MAIL_TO,
-    subject: `Mensaje de ${name}`,
-    text: `${message}`
+        from: email,
+        to: process.env.MAIL_TO,
+        subject: `Mensaje de ${name}`,
+        text: `${message}`
     };
 
     transporter.sendMail(mailOptions, function(error, info){
