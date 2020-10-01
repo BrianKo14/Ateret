@@ -1,6 +1,6 @@
 #titleLogo {
     padding-bottom: 150px;
-    width: 600px;
+    width: 40vw;
 }
 
 #smallLogo {
@@ -24,12 +24,12 @@
     width: 50%;
   }
   
-  /* Clear floats after the columns */
-  .row:after {
+/* Clear floats after the columns */
+.row:after {
     content: "";
     display: table;
     clear: both;   
-  }
+}
 
 #pSpecial1 {
     font-size: 14px;
@@ -51,4 +51,32 @@ h2 {
 
 #messageSent {
     opacity: 0;
+}
+
+@media only screen and (max-device-width: 480px) {
+    .hide-mobile {
+        display: none !important;
+    }
+
+    #titleLogo {
+        width: 70vw;
+    }
+
+    #smallLogo {
+        box-shadow: none !important;
+        width: 70vw !important;
+    }
+
+    #contact-title {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 30px;
+    }
+}
+
+@media only screen and (min-device-width: 480px) {
+    .show-mobile {
+        display: none !important;
+    }
 }

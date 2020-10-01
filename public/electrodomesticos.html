@@ -33,7 +33,8 @@
 							<li class="active"><a href="electrodomesticos.html">Electrodomesticos</a></li>
 							<li><a href="placard.html">Placard</a></li>
 							<li><a href="galeria.html">Galería</a></li>
-							<li><a href="index.html#nosotros">Nosotros</a></li>
+							<li class="hide-mobile"><a href="index.html#nosotros">Nosotros</a></li>
+							<li class="show-mobile"><a href="index.html#nosotros-mobile">Nosotros</a></li>
 							<li><a href="#footer">Contacto</a></li>
 						</ul>
 						<ul class="icons">
@@ -68,7 +69,7 @@
 					<section id="contactForm">
 						<form method="post" action="#">
 							<div class="fields">
-								<h2>Contacto</h2>
+								<h2 id="contact-title">Contacto</h2>
 								<div class="field">
 									<label for="name">Nombre</label>
 									<input type="text" name="name" id="name" />
@@ -94,6 +95,9 @@
 						<h3 style="padding-top: 20px;">O puedes enviarnos un mail a <a
 								href="mailto: cocinas@ateret.com.ar">cocinas@ateret.com.ar</a></h3>
 					</section>
+		
+					<br class="show-mobile">
+					
 					<section class="split contact">
 						<section class="alt">
 							<h3>Dirección</h3>
@@ -104,11 +108,19 @@
 							<p><i>Lunes a viernes:</i> 10:00 a 13:00 / 15:00 a 19:00hs. <br />
 								<i>Sábado:</i> 10:00 a 14:00hs.</p>
 						</section>
-						<section>
+						<section class="hide-mobile">
 							<h3>WhatsApp</h3>
 							<p>11 6804 1818</p>
 							<h3 style="padding-left:50px;">Showroom</h3>
 							<p style="padding-left:20px;">(+54) 11 4773 6841</p>
+						</section>
+						<section class="alt show-mobile">
+							<h3>WhatsApp</h3>
+							<p>11 6804 1818</p>
+						</section>
+						<section class="alt show-mobile">
+							<h3>Showroom</h3>
+							<p>(+54) 11 4773 6841</p>
 						</section>
 						<section>
 							<h3>Email</h3>
