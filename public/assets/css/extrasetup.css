@@ -53,12 +53,15 @@ h2 {
     opacity: 0;
 }
 
+canvas:focus {outline:0;}
+
 @media only screen and (max-device-width: 480px) {
     .hide-mobile {
         display: none !important;
     }
 
     #titleLogo {
+        padding-top: 100%;
         width: 70vw;
     }
 
