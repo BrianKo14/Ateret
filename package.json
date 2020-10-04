@@ -4,7 +4,7 @@
   "description": "Original site: http://www.ateret.com.ar/web/   New site: https://brianko14.github.io/Ateret/",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
