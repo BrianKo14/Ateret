@@ -7,32 +7,37 @@ html, body {
 }
 
 /* Title */
-.title {
+#title {
+    display: none;
     width: 40vw;
-    transform: translate(-50%, -50%);
-    position: fixed;
-    z-index: 1;
+    transform: translate(-50%, -52.5%);
+    position: absolute;
+    z-index: 3;
     top: 50%;
     left: 50%;
 
-    filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.6));
+    filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.1));
 }
 
 
 
 /* Navigation */
 .nav-block {
-    position:fixed; 
+    /* z-index: 1; */
+    position: fixed; 
     width:50%; 
     height:50%;
 
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden
+    overflow: hidden;
+    opacity: 0;
 }
-.nav-block video {
+
+.nav-block video:not(.bw) {
     /* width: 400px; */
+    z-index: -1 !important;
     padding: 0;
     margin: 0;
 
@@ -43,23 +48,19 @@ html, body {
     overflow: hidden;
 }
 
-.nav-block:hover {
-    /* width: 100vw;
-    height: 100vh; */
-    overflow: hidden;
-}
-.nav-block video:hover {
-    /* opacity: 0.8;
-    transform: scale(4px);
-    filter: blur(9px);
-    overflow: hidden; */
-    /* transform: scale(1.03); */
-}
-
 #NW { top:0;   left:0;}
 #NE { top:0;   left:50%;}
 #SW { top:50%; left:0;}
-#SE { top:50%; left:50%;}    
+#SE { top:50%; left:50%;}   
+
+.bw {
+    position: absolute;
+    filter: grayscale(100%);
+    z-index: 1 !important;
+    opacity: 1 !important;
+    clip: rect(0, 0vw, 100vh, 0);
+    left: 0;
+}
 
 .no-select {
     pointer-events: none;
@@ -68,4 +69,95 @@ html, body {
     -moz-user-select: none;
     -o-user-select: none;
     user-select: none;
+}
+
+.nav-button {
+    position: fixed;
+    z-index: 5 !important;
+
+    border-style: solid;
+    border-width: 2px;
+
+    color: white !important;
+    
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Source Sans Pro", Helvetica, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 900;
+    letter-spacing: 0.075em;
+    height: 3rem;
+    line-height: 3rem;
+    padding: 0 2rem;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+    background-color: rgba(255, 255, 255, 0.05);
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+.nav-button div:hover{
+    color: black;
+}
+
+.svg-button {
+    z-index: -1;
+
+    height: 100%;
+    position: absolute;
+    top: 0;
+
+    background-color: white;
+}
+
+#margin {
+    pointer-events: none;
+    position: fixed;
+    z-index: 1;
+
+    border-style: solid;
+    color: white;
+
+    /* border-width: 5px;
+    width: calc(100vw - (10px + 5px)*2);
+    height: calc(100vh - (10px + 5px)*2);
+    margin: 10px; */
+
+    border-width: 10px;
+    width: calc(100vw - 10px*2);
+    height: calc(100vh - 10px*2);
+    margin: 0px;
+}
+
+
+/* Social */
+#social {
+    z-index: 2;
+    position: fixed;
+
+    transform: translate(-50%, 0);
+
+    left: 50vw;
+    top: 50vw;
+}
+#social a {
+    font-size: 30px;
+
+    margin: 20px;
+
+    text-decoration: none;
+    color: white;
+
+    opacity: 0;
+}
+#social a:hover {
+    /* color: #158DA5; */
+    color: black;
 }

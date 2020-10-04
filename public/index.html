@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <link rel="icon" href="assets/images/A_logo.png">
     <title>Ateret Cocinas</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/main.css"/>
 </head>
 <body>
-    <!-- <img class="title" src="assets/images/Logo.svg"> -->
-    <div class="title">
+    <div>
+    <div id="title">
         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
         viewBox="0 0 841.9 595.3" style="enable-background:new 0 0 841.9 595.3;" xml:space="preserve">
             <style type="text/css">
@@ -111,32 +113,75 @@
             </g>
         </svg>
     </div>
+    </div>
 
     <div>
+        <!-- <span id="margin"></span> -->
 
-        <div class="nav-block" id="NW">
-            <video autoplay loop muted>
-                <source src="assets/images/interior1.mp4" type="video/mp4"/>
-                <p class="warning">Your browser does not support HTML5 video.</p>
-            </video>
+        <div id="social">
+            <a target="_blank" href="https://www.facebook.com/cocinasateret/" class="fa fa-facebook-square"></a>
+            <a target="_blank" href="https://www.instagram.com/ateret_cocinas/?hl=en" class="fa fa-instagram"></a>
+            <a target="_blank" href="#" class="fa fa-envelope"></a>
+            <a target="_blank" href="#" class="fa fa-whatsapp"></a>
         </div>
-        <div class="nav-block" id="NE">
-            <video autoplay loop muted>
-                <source src="assets/images/furniture1.mp4" type="video/mp4"/>
-                <p class="warning">Your browser does not support HTML5 video.</p>
-            </video>
-        </div>
-        <div class="nav-block" id="SW">
-            <video autoplay loop muted>
-                <source src="assets/images/oven1.mp4" type="video/mp4"/>
-                <p class="warning">Your browser does not support HTML5 video.</p>
-            </video>
-        </div>
-        <div class="nav-block" id="SE">
-            <video autoplay loop muted>
-                <source src="assets/images/interior2.mp4" type="video/mp4"/>
-                <p class="warning">Your browser does not support HTML5 video.</p>
-            </video>
+        
+        <div>
+            <div class="nav-block" id="NW">
+                <div class="nav-button">
+                    <span class="svg-button" style="right: 0;"></span>
+                    <div id="cocinas-button">COCINAS</div>
+                </div>
+                <!-- <video autoplay loop muted class="bw" id="NW-bw">
+                    <source src="assets/images/cocinas.mp4" type="video/mp4"/>
+                    <p class="warning">Your browser does not support HTML5 video.</p>
+                </video> -->
+                <video autoplay loop muted class="nav-video">
+                    <source src="assets/images/cocinas.mp4" type="video/mp4"/>
+                    <p class="warning">Your browser does not support HTML5 video.</p>
+                </video>
+            </div>
+            <div class="nav-block" id="NE">
+                <div class="nav-button">
+                    <span class="svg-button" style="right: 0;"></span>
+                    <div id="mesadas-button">MESADAS</div>
+                </div>
+                <!-- <video autoplay loop muted class="bw" id="NE-bw">
+                    <source src="assets/images/mesadas.mp4" type="video/mp4"/>
+                    <p class="warning">Your browser does not support HTML5 video.</p>
+                </video> -->
+                <video autoplay loop muted class="nav-video">
+                    <source src="assets/images/mesadas.mp4" type="video/mp4"/>
+                    <p class="warning">Your browser does not support HTML5 video.</p>
+                </video>
+            </div>
+            <div class="nav-block" id="SW">
+                <div class="nav-button">
+                    <span class="svg-button" style="right: 0;"></span>
+                    <div id="ed-button">ELECTRODOMESTICOS</div>
+                </div>
+                <!-- <video autoplay loop muted class="bw" id="SW-bw">
+                    <source src="assets/images/electrodomesticos.mp4" type="video/mp4"/>
+                    <p class="warning">Your browser does not support HTML5 video.</p>
+                </video> -->
+                <video autoplay loop muted class="nav-video">
+                    <source src="assets/images/electrodomesticos.mp4" type="video/mp4"/>
+                    <p class="warning">Your browser does not support HTML5 video.</p>
+                </video>
+            </div>
+            <div class="nav-block" id="SE">
+                <div class="nav-button">
+                    <span class="svg-button" style="right: 0;"></span>
+                    <div id="placard-button">PLACARD</div>
+                </div>
+                <!-- <video autoplay loop muted class="bw" id="SE-bw">
+                    <source src="assets/images/placard.mp4" type="video/mp4"/>
+                    <p class="warning">Your browser does not support HTML5 video.</p>
+                </video> -->
+                <video autoplay loop muted class="nav-video">
+                    <source src="assets/images/placard.mp4" type="video/mp4"/>
+                    <p class="warning">Your browser does not support HTML5 video.</p>
+                </video>
+            </div>
         </div>
     </div>
 
