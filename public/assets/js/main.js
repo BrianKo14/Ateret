@@ -1,15 +1,17 @@
 
 // Intro animation
-anime({
-    targets: ['#NW', '#SE'],
-    easing: 'easeInOutSine',
-    opacity: [0, 1],
-    duration: 2000
-});
+setTimeout( () => {
+    anime({
+        targets: ['#NE', '#SW'],
+        easing: 'easeInOutSine',
+        opacity: [0, 1],
+        duration: 2000
+    })
+}, 1000);
 
 setTimeout(() => {
     anime({
-        targets: ['#NE', '#SW'],
+        targets: ['#NW', '#SE'],
         easing: 'easeInOutSine',
         opacity: [0, 1],
         duration: 2000,
@@ -26,13 +28,13 @@ setTimeout(() => {
         delay: anime.stagger(400),
         duration: 1000,
     });
-}, 500);
+}, 2500);
 
 setTimeout(() => {
     $('#title').attr('style', 'display: block;');
 
     var titleTimeline = anime.timeline({
-        easing: 'easeInSine', // Default: easeInOutSine
+        easing: 'easeInOutSine', // Default: easeInSine
     });
     
     titleTimeline
