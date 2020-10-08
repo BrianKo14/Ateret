@@ -64,13 +64,23 @@ html, body {
     left: 0;
 } */
 
-.no-select {
+.no-pointer {
     pointer-events: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: none;
     -o-user-select: none;
     user-select: none;
+}
+
+.no-select {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
 }
 
 .nav-button {
@@ -96,14 +106,6 @@ html, body {
     text-transform: uppercase;
     white-space: nowrap;
     background-color: rgba(255, 255, 255, 0.1);
-
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome, Edge, Opera and Firefox */
 }
 .nav-button div:hover{
     color: black;
@@ -147,7 +149,7 @@ html, body {
     transform: translate(-50%, 0);
 
     left: 50vw;
-    top: 50vw;
+    bottom: 20px;
 }
 #social a {
     font-size: 30px;
@@ -162,4 +164,35 @@ html, body {
 #social a:hover {
     /* color: #158DA5; */
     color: black;
+}
+
+
+/* Text buttons */
+#contactate {
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    font-weight: 900;
+    letter-spacing: 0.075em;
+
+    border-bottom: 2px solid white;
+    padding-bottom: 3px;
+
+    z-index: 10;
+    display: block;
+    position: absolute;
+    left: calc(50vw - 7.5ch);
+    top: 20px;
+    text-align: center;
+
+    cursor: pointer;
+
+    opacity: 0;
+}
+
+.black-highlight {
+    background-image: linear-gradient(black, black);
+    background-repeat: no-repeat;
+    background-position: 0% 100%;
+    background-size: 0% 1rem;
 }

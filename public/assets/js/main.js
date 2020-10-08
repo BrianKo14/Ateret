@@ -22,7 +22,7 @@ setTimeout(() => {
     });
 
     anime({
-        targets: '.fa',
+        targets: ['.fa', '#contactate'],
         opacity: 1,
         easing: 'easeInOutSine',
         delay: anime.stagger(400),
@@ -33,8 +33,12 @@ setTimeout(() => {
 setTimeout(() => {
     $('#title').attr('style', 'display: block;');
 
+    drawLogo();
+}, 500);
+
+function drawLogo() {
     var titleTimeline = anime.timeline({
-        easing: 'easeInOutSine', // Default: easeInSine
+        easing: 'easeInSine', // Default: easeInOutSine
     });
     
     titleTimeline
@@ -58,7 +62,35 @@ setTimeout(() => {
         fill: ['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 1)'],
         duration: 800
     }, '-=1500');
-}, 500);
+}
+
+function eraseLogo() {
+    var titleTimeline = anime.timeline({
+        easing: 'easeInOutSine', // Default: easeInSine
+    });
+    
+    titleTimeline
+    .add({
+        targets: ['#ateret path', '#cocinas path'],
+        strokeDashoffset: [0, anime.setDashoffset],
+        duration: 875
+    })
+    .add({
+        targets: '#lines line',
+        strokeDashoffset: [0, anime.setDashoffset],
+        duration: 300
+    }, '-=875')
+    .add({
+        targets: '#ateret path',
+        fill: ['#158DA5', 'rgba(21, 141, 165, 0)'],
+        duration: 200
+    }, '-=300')
+    .add({
+        targets: '#cocinas path',
+        fill: ['rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 0)'],
+        duration: 200
+    }, '-=375');
+}
 
 
 // Button animation
@@ -74,16 +106,6 @@ e => {
             svg.setAttribute('style', 'left: 0; width: 100%;');
         },
     });
-
-    // const id = e.target.parentElement.parentElement.id;
-    // var targets = ['#NW-bw', '#NE-bw', '#SW-bw', '#SE-bw'];
-    // targets.splice(targets.indexOf('#' + id + '-bw'), 1);
-    // anime({
-    //     targets: targets,
-    //     clip: 'rect(0, 100vw, 100vh, 0)',
-    //     easing: 'easeInOutCirc',
-    //     duration: 1000,
-    // });
 },
 e => {
     var svg = e.target.parentElement.querySelector('.svg-button');
@@ -96,17 +118,26 @@ e => {
             svg.setAttribute('style', 'right: 0; width: 0%;');
         },
     });
-    
-    // const id = e.target.parentElement.parentElement.id;
-    // var targets = ['#NW-bw', '#NE-bw', '#SW-bw', '#SE-bw'];
-    // targets.splice(targets.indexOf('#' + id + '-bw'), 1);
-    // anime({
-    //     targets: targets,
-    //     clip: 'rect(0, 0vw, 100vh, 0)',
-    //     easing: 'easeInOutCirc',
-    //     duration: 1000,
-    // });
 });
+
+$('.black-highlight').hover(
+    e => {
+        anime({
+            targets: e.target,
+            easing: 'easeInSine',
+            duration: 200,
+            backgroundSize: ['0% 1.4rem', '100% 1.4rem'],
+        });
+    },
+    e => {
+        anime({
+            targets: e.target,
+            easing: 'easeInSine',
+            duration: 200,
+            backgroundSize: ['100% 1.4rem', '0% 1.4rem'],
+        });
+    }
+);
 
 
 // Cocinas
@@ -124,10 +155,5 @@ $('#cocinas-button').click(() => {
         delay: anime.stagger(100),
         translateX: '-100vw',
     });
-    anime({
-        targets: '#title',
-        easing: 'easeInOutQuad',
-        translateX: ['-50%', '-50%'],
-        translateY: ['-52.5%','-112.5%'],
-    });
+    eraseLogo();
 });
