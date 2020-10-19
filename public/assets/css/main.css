@@ -8,62 +8,6 @@ html, body {
     background-color: black;
 }
 
-/* Title */
-#title {
-    display: none;
-    width: 40vw;
-    transform: translate(-50%, -52.5%);
-    position: absolute;
-    z-index: 3;
-    top: 50%;
-    left: 50%;
-
-    filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.1));
-}
-
-
-
-/* Navigation */
-.nav-block {
-    /* z-index: 1; */
-    position: fixed; 
-    width:50%; 
-    height:50%;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    opacity: 0;
-}
-
-.nav-block video:not(.bw) {
-    /* width: 400px; */
-    z-index: -1 !important;
-    padding: 0;
-    margin: 0;
-
-    flex-shrink: 0;
-    min-width: 100%;
-    min-height: 100%;
-
-    overflow: hidden;
-}
-
-#NW { top:0;   left:0;}
-#NE { top:0;   left:50%;}
-#SW { top:50%; left:0;}
-#SE { top:50%; left:50%;}   
-
-/* .bw {
-    position: absolute;
-    filter: grayscale(100%);
-    z-index: 1 !important;
-    opacity: 1 !important;
-    clip: rect(0, 0vw, 100vh, 0);
-    left: 0;
-} */
-
 .no-pointer {
     pointer-events: none;
     -webkit-user-select: none;
@@ -82,6 +26,52 @@ html, body {
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
 }
+
+/* TITLE */
+#title {
+    display: none;
+    width: 40vw;
+    transform: translate(-50%, -52.5%);
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    left: 50%;
+
+    filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.1));
+}
+
+
+
+/* NAVIGATION */
+.nav-block {
+    position: fixed; 
+    width:50%; 
+    height:50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.nav-block video {
+    z-index: -1 !important;
+    padding: 0;
+    margin: 0;
+
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%;
+
+    overflow: hidden;
+    filter: brightness(70%);
+}
+
+#NW { top:0;   left:0;}
+#NE { top:0;   left:50%;}
+#SW { top:50%; left:0;}
+#SE { top:50%; left:50%;}   
 
 .nav-button {
     position: fixed;
@@ -121,6 +111,7 @@ html, body {
     background-color: white;
 }
 
+/* MARGIN */
 #margin {
     pointer-events: none;
     position: fixed;
@@ -141,7 +132,7 @@ html, body {
 }
 
 
-/* Social */
+/* SOCIAL ICONS */
 #social {
     z-index: 2;
     position: fixed;
@@ -164,10 +155,11 @@ html, body {
 #social a:hover {
     /* color: #158DA5; */
     color: black;
+    filter: drop-shadow(0px 3px 3px rgba(255, 255, 255, 0.1));
 }
 
 
-/* Text buttons */
+/* TEXT BUTTONS */
 #contactate {
     color: white;
     font-family: 'Roboto', sans-serif;
@@ -193,6 +185,6 @@ html, body {
 .black-highlight {
     background-image: linear-gradient(black, black);
     background-repeat: no-repeat;
-    background-position: 0% 100%;
+    background-position: right bottom;
     background-size: 0% 1rem;
 }
