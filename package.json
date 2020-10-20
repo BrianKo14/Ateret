@@ -4,7 +4,8 @@
   "description": "Original site: http://www.ateret.com.ar/web/   New site: https://brianko14.github.io/Ateret/",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "dev": "parcel src/index.html",
+    "build": "parcel build src/index.html"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,8 @@
   },
   "homepage": "https://github.com/BrianKo14/Ateret#readme",
   "dependencies": {
+    "@dogstudio/highway": "^2.2.1",
+    "anim.js": "0.0.1",
     "express": "^4.17.1"
   }
 }
