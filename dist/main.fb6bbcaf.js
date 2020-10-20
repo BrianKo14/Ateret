@@ -117,132 +117,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"js/anim.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.introAnimation = introAnimation;
-exports.drawLogo = drawLogo;
-exports.eraseLogo = eraseLogo;
-exports.darkenBlocks = darkenBlocks;
-exports.lightenBlocks = lightenBlocks;
-
-function introAnimation() {
-  setTimeout(function () {
-    anime({
-      targets: ['#NE', '#SW'],
-      easing: 'easeInOutSine',
-      opacity: [0, 1],
-      duration: 2000
-    });
-  }, 1000);
-  setTimeout(function () {
-    anime({
-      targets: ['#NW', '#SE'],
-      easing: 'easeInOutSine',
-      opacity: [0, 1],
-      duration: 2000,
-      complete: function complete() {// $('body').attr('style', 'background: black url("images/marble-bg1.jpg") no-repeat fixed center;');
-        // $('.bw').css('opacity', 1);
-      }
-    });
-    anime({
-      targets: ['.fa', '#contactate'],
-      opacity: 1,
-      easing: 'easeInOutSine',
-      delay: anime.stagger(400),
-      duration: 1000
-    });
-  }, 1500);
-  setTimeout(function () {
-    $('#title').attr('style', 'display: block;');
-    drawLogo();
-  }, 500);
-}
-
-function drawLogo() {
-  var titleTimeline = anime.timeline({
-    easing: 'easeInOutSine' // Default: easeInSine
-
-  });
-  titleTimeline.add({
-    targets: ['#ateret path', '#cocinas path'],
-    strokeDashoffset: [anime.setDashoffset, 0],
-    duration: 3500
-  }).add({
-    targets: '#lines line',
-    strokeDashoffset: [anime.setDashoffset, 0],
-    duration: 1200
-  }, '-=3500').add({
-    targets: '#ateret path',
-    fill: ['rgba(21, 141, 165, 0)', '#158DA5'],
-    duration: 800
-  }, '-=1200').add({
-    targets: '#cocinas path',
-    fill: ['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 1)'],
-    duration: 800
-  }, '-=1500');
-}
-
-function eraseLogo() {
-  var titleTimeline = anime.timeline({
-    easing: 'easeInOutSine' // Default: easeInSine
-
-  });
-  titleTimeline.add({
-    targets: ['#ateret path', '#cocinas path'],
-    strokeDashoffset: [0, anime.setDashoffset],
-    duration: 875
-  }).add({
-    targets: '#lines line',
-    strokeDashoffset: [0, anime.setDashoffset],
-    duration: 300
-  }, '-=875').add({
-    targets: '#ateret path',
-    fill: ['#158DA5', 'rgba(21, 141, 165, 0)'],
-    duration: 200
-  }, '-=300').add({
-    targets: '#cocinas path',
-    fill: ['rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 0)'],
-    duration: 200
-  }, '-=375');
-}
-
-function darkenBlocks(exceptionBlock) {
-  var blocks = $('.nav-block').not(exceptionBlock).toArray();
-  anime({
-    targets: blocks,
-    easing: 'easeInOutCirc',
-    duration: 300,
-    filter: ['brightness(100%) grayscale(0%)', 'brightness(50%) grayscale(0%)'] // Change grayscale to turn gray
-
-  });
-  anime({
-    targets: exceptionBlock.getElementsByTagName('video')[0],
-    easing: 'easeInOutCirc',
-    duration: 300,
-    filter: ['brightness(70%)', 'brightness(100%)']
-  });
-}
-
-function lightenBlocks(exceptionBlock) {
-  var blocks = $('.nav-block').not(exceptionBlock).toArray();
-  anime({
-    targets: blocks,
-    easing: 'easeInOutCirc',
-    duration: 300,
-    filter: ['brightness(50%)', 'brightness(100%)']
-  });
-  anime({
-    targets: exceptionBlock.getElementsByTagName('video')[0],
-    easing: 'easeInOutCirc',
-    duration: 300,
-    filter: ['brightness(100%)', 'brightness(70%)']
-  });
-}
-},{}],"../node_modules/@dogstudio/highway/build/highway.module.js":[function(require,module,exports) {
+})({"../node_modules/@dogstudio/highway/build/highway.module.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -554,7 +429,235 @@ var _default = {
   Transition: s
 };
 exports.default = _default;
-},{}],"js/main.js":[function(require,module,exports) {
+},{}],"js/anim.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.introAnimation = introAnimation;
+exports.drawLogo = drawLogo;
+exports.eraseLogo = eraseLogo;
+exports.darkenBlocks = darkenBlocks;
+exports.lightenBlocks = lightenBlocks;
+exports.CocinasTransition = exports.HomeRenderer = void 0;
+
+var _highway = _interopRequireDefault(require("@dogstudio/highway"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+var HomeRenderer = /*#__PURE__*/function (_Highway$Renderer) {
+  _inherits(HomeRenderer, _Highway$Renderer);
+
+  var _super = _createSuper(HomeRenderer);
+
+  function HomeRenderer() {
+    _classCallCheck(this, HomeRenderer);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(HomeRenderer, [{
+    key: "onEnter",
+    value: function onEnter() {}
+  }]);
+
+  return HomeRenderer;
+}(_highway.default.Renderer);
+
+exports.HomeRenderer = HomeRenderer;
+
+var CocinasTransition = /*#__PURE__*/function (_Highway$Transition) {
+  _inherits(CocinasTransition, _Highway$Transition);
+
+  var _super2 = _createSuper(CocinasTransition);
+
+  function CocinasTransition() {
+    _classCallCheck(this, CocinasTransition);
+
+    return _super2.apply(this, arguments);
+  }
+
+  _createClass(CocinasTransition, [{
+    key: "in",
+    value: function _in(_ref) {
+      var from = _ref.from,
+          to = _ref.to,
+          done = _ref.done;
+      anime({
+        targets: to,
+        easing: 'easeInOutSine',
+        opacity: [0, 0.9],
+        duration: 1000,
+        complete: function complete() {
+          // from.style.opacity = 1;
+          // from.remove(); // DO NOT remove to avoid having to repeat intro animation 
+          done();
+        }
+      });
+    }
+  }, {
+    key: "out",
+    value: function out(_ref2) {
+      var from = _ref2.from,
+          to = _ref2.to,
+          done = _ref2.done;
+      $('#cocinas.wrapper').css('display', 'block');
+      anime({
+        targets: '#cocinas-wrapper',
+        easing: 'easeInOutSine',
+        opacity: [0.9, 0],
+        duration: 1000,
+        complete: function complete() {
+          $('#cocinas-wrapper').remove();
+          done();
+        }
+      });
+    }
+  }]);
+
+  return CocinasTransition;
+}(_highway.default.Transition); // Intro
+
+
+exports.CocinasTransition = CocinasTransition;
+
+function introAnimation() {
+  setTimeout(function () {
+    anime({
+      targets: ['#NE', '#SW'],
+      easing: 'easeInOutSine',
+      opacity: [0, 1],
+      duration: 2000
+    });
+  }, 1000);
+  setTimeout(function () {
+    anime({
+      targets: ['#NW', '#SE'],
+      easing: 'easeInOutSine',
+      opacity: [0, 1],
+      duration: 2000,
+      complete: function complete() {// $('body').attr('style', 'background: black url("images/marble-bg1.jpg") no-repeat fixed center;');
+        // $('.bw').css('opacity', 1);
+      }
+    });
+    anime({
+      targets: ['.fa', '#contactate'],
+      opacity: 1,
+      easing: 'easeInOutSine',
+      delay: anime.stagger(400),
+      duration: 1000
+    });
+  }, 1500);
+  setTimeout(function () {
+    $('#title').attr('style', 'display: block;');
+    drawLogo();
+  }, 500);
+}
+
+function drawLogo() {
+  var titleTimeline = anime.timeline({
+    easing: 'easeInOutSine' // Default: easeInSine
+
+  });
+  titleTimeline.add({
+    targets: ['#ateret path', '#cocinas path'],
+    strokeDashoffset: [anime.setDashoffset, 0],
+    duration: 3500
+  }).add({
+    targets: '#lines line',
+    strokeDashoffset: [anime.setDashoffset, 0],
+    duration: 1200
+  }, '-=3500').add({
+    targets: '#ateret path',
+    fill: ['rgba(21, 141, 165, 0)', '#158DA5'],
+    duration: 800
+  }, '-=1200').add({
+    targets: '#cocinas path',
+    fill: ['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 1)'],
+    duration: 800
+  }, '-=1500');
+}
+
+function eraseLogo() {
+  var titleTimeline = anime.timeline({
+    easing: 'easeInOutSine' // Default: easeInSine
+
+  });
+  titleTimeline.add({
+    targets: ['#ateret path', '#cocinas path'],
+    strokeDashoffset: [0, anime.setDashoffset],
+    duration: 875
+  }).add({
+    targets: '#lines line',
+    strokeDashoffset: [0, anime.setDashoffset],
+    duration: 300
+  }, '-=875').add({
+    targets: '#ateret path',
+    fill: ['#158DA5', 'rgba(21, 141, 165, 0)'],
+    duration: 200
+  }, '-=300').add({
+    targets: '#cocinas path',
+    fill: ['rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 0)'],
+    duration: 200
+  }, '-=375');
+}
+
+function darkenBlocks(exceptionBlock) {
+  var blocks = $('.nav-block').not(exceptionBlock).toArray();
+  anime({
+    targets: blocks,
+    easing: 'easeInOutCirc',
+    duration: 300,
+    filter: ['brightness(100%) grayscale(0%)', 'brightness(50%) grayscale(0%)'] // Change grayscale to turn gray
+
+  });
+  anime({
+    targets: exceptionBlock.getElementsByTagName('video')[0],
+    easing: 'easeInOutCirc',
+    duration: 300,
+    filter: ['brightness(70%)', 'brightness(100%)']
+  });
+}
+
+function lightenBlocks(exceptionBlock) {
+  var blocks = $('.nav-block').not(exceptionBlock).toArray();
+  anime({
+    targets: blocks,
+    easing: 'easeInOutCirc',
+    duration: 300,
+    filter: ['brightness(50%)', 'brightness(100%)']
+  });
+  anime({
+    targets: exceptionBlock.getElementsByTagName('video')[0],
+    easing: 'easeInOutCirc',
+    duration: 300,
+    filter: ['brightness(100%)', 'brightness(70%)']
+  });
+}
+},{"@dogstudio/highway":"../node_modules/@dogstudio/highway/build/highway.module.js"}],"js/main.js":[function(require,module,exports) {
 "use strict";
 
 var Anim = _interopRequireWildcard(require("./anim.js"));
@@ -567,8 +670,14 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-var H = new _highway.default.Core(); // Intro
-
+var H = new _highway.default.Core({
+  renderers: {
+    home: Anim.HomeRenderer
+  },
+  transitions: {
+    cocinas: Anim.CocinasTransition
+  }
+});
 Anim.introAnimation(); // Button animation
 
 $('.nav-button div').hover(function (e) {
@@ -646,13 +755,21 @@ function moveIn() {
 
 
 $('#cocinas-button').click(function () {
-  moveOut();
-  Anim.eraseLogo();
+  // moveOut();
+  // Anim.eraseLogo();
+  // window.location.href = 'cocinas.html';
+  $('#cocinas-bg').css('display', 'block');
+  anime({
+    targets: '#cocinas-bg',
+    easing: 'easeInOutSine',
+    opacity: [0, 0.9],
+    duration: 1000
+  });
 });
 $('#contactate').click(function () {
   moveIn();
 });
-},{"./anim.js":"js/anim.js","@dogstudio/highway":"../node_modules/@dogstudio/highway/build/highway.module.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./anim.js":"js/anim.js","@dogstudio/highway":"../node_modules/@dogstudio/highway/build/highway.module.js"}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -680,7 +797,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64164" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60053" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -856,5 +973,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/main.js"], null)
+},{}]},{},["../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/main.js"], null)
 //# sourceMappingURL=/main.fb6bbcaf.js.map

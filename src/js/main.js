@@ -1,12 +1,17 @@
 import * as Anim from './anim.js';
 
 import Highway from '@dogstudio/highway';
-const H = new Highway.Core();
 
+const H = new Highway.Core({
+    renderers: {
+        home: Anim.HomeRenderer,
+    },
+    transitions: {
+        cocinas: Anim.CocinasTransition,
+    }
+});
 
-// Intro
 Anim.introAnimation();
-
 
 // Button animation
 $('.nav-button div').hover(
@@ -93,8 +98,16 @@ function moveIn() {
 
 // Cocinas
 $('#cocinas-button').click(() => {
-    moveOut();
-    Anim.eraseLogo();
+    // moveOut();
+    // Anim.eraseLogo();
+    // window.location.href = 'cocinas.html';
+    $('#cocinas-bg').css('display', 'block');
+    anime({
+        targets: '#cocinas-bg',
+        easing: 'easeInOutSine',
+        opacity: [0, 0.9],
+        duration: 1000,
+    });
 });
 
 $('#contactate').click(() => {

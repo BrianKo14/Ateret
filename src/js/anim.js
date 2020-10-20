@@ -1,3 +1,41 @@
+import Highway from '@dogstudio/highway';
+
+export class HomeRenderer extends Highway.Renderer {
+    onEnter() {
+        
+    }
+}
+
+export class CocinasTransition extends Highway.Transition{
+    in({from, to, done}) {
+        anime({
+            targets: to,
+            easing: 'easeInOutSine',
+            opacity: [0, 0.9],
+            duration: 1000,
+            complete: () => {
+                // from.style.opacity = 1;
+                // from.remove(); // DO NOT remove to avoid having to repeat intro animation 
+                done(); 
+            }
+        });
+    }
+    out({from, to, done}) {
+        $('#cocinas.wrapper').css('display', 'block');
+        anime({
+            targets: '#cocinas-wrapper',
+            easing: 'easeInOutSine',
+            opacity: [0.9, 0],
+            duration: 1000,
+            complete: () => {
+                $('#cocinas-wrapper').remove();
+                done(); 
+            }
+        });
+    }
+}
+ 
+ // Intro
  export function introAnimation() {
     setTimeout( () => {
         anime({

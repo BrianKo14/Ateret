@@ -97,6 +97,10 @@ html, body {
     white-space: nowrap;
     background-color: rgba(255, 255, 255, 0.1);
 }
+/* .nav-button a {
+    text-decoration: none;
+    color: white;
+} */
 .nav-button div:hover{
     color: black;
 }
@@ -187,6 +191,32 @@ html, body {
     background-repeat: no-repeat;
     background-position: right bottom;
     background-size: 0% 1rem;
+}
+
+/* COCINAS */
+#cocinas-bg {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background-color: white;
+    padding: 0;
+    z-index: 100;
+    display: none;
+
+    opacity: 0;
+}
+
+#back-button {
+    font-size: 30px;
+
+    margin: 20px;
+    position: fixed;
+
+    text-decoration: none;
+    color: black;
+
+    left: 30px;
+    top: 30px;
 }
 
 /*# sourceMappingURL=/main.c52e0fe2.css.map */
