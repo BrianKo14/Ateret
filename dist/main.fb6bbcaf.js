@@ -652,7 +652,7 @@ $('#cocinas-button').click(function () {
 $('#contactate').click(function () {
   moveIn();
 });
-},{"./anim.js":"js/anim.js","@dogstudio/highway":"../node_modules/@dogstudio/highway/build/highway.module.js"}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./anim.js":"js/anim.js","@dogstudio/highway":"../node_modules/@dogstudio/highway/build/highway.module.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -680,7 +680,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61428" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64164" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -856,5 +856,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/main.js"], null)
+},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/main.js"], null)
 //# sourceMappingURL=/main.fb6bbcaf.js.map
