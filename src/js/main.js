@@ -1,16 +1,5 @@
 import * as Anim from './anim.js';
 
-import Highway from '@dogstudio/highway';
-
-const H = new Highway.Core({
-    renderers: {
-        home: Anim.HomeRenderer,
-    },
-    transitions: {
-        cocinas: Anim.CocinasTransition,
-    }
-});
-
 Anim.introAnimation();
 
 // Button animation
@@ -46,6 +35,9 @@ e => {
     Anim.lightenBlocks(e.target.parentElement.parentElement);
 });
 
+var toHLColor = '#000';
+var fromHLColor = '#FFF';
+
 // Highlight animation
 $('.black-highlight').hover(
     e => {
@@ -53,18 +45,21 @@ $('.black-highlight').hover(
             targets: e.target,
             easing: 'easeInSine',
             duration: 200,
+            color: toHLColor,
+            borderBottom: '2px solid ' + toHLColor,
             backgroundSize: ['0% 1.4rem', '100% 1.4rem'],
             complete: () => {
                 e.target.style.backgroundPosition = 'left bottom';
             },
         });
-
     },
     e => {
         anime({
             targets: e.target,
             easing: 'easeInSine',
             duration: 200,
+            color: fromHLColor,
+            borderBottom: '2px solid ' + fromHLColor,
             backgroundSize: ['100% 1.4rem', '0% 1.4rem'],
             complete: () => {
                 e.target.style.backgroundPosition = 'right bottom';
@@ -74,33 +69,8 @@ $('.black-highlight').hover(
     }
 );
 
-
-// Menu reorganization
-function moveOut() {
-    anime({
-        targets: ['#NE', '#SE'],
-        easing: 'easeInOutQuad',
-        delay: anime.stagger(100),
-        translateX: ['0', '100vw'],
-    });
-    anime({
-        targets: ['#NW', '#SW'],
-        easing: 'easeInOutQuad',
-        delay: anime.stagger(100),
-        translateX: ['0', '-100vw'],
-    });
-}
-function moveIn() {
-    $('.nav-block').css({'transform': 'translateX(0)', 'opacity': 0});
-    Anim.introAnimation();
-}
-
-
 // Cocinas
 $('#cocinas-button').click(() => {
-    // moveOut();
-    // Anim.eraseLogo();
-    // window.location.href = 'cocinas.html';
     $('#cocinas-bg').css('display', 'block');
     anime({
         targets: '#cocinas-bg',
@@ -108,8 +78,44 @@ $('#cocinas-button').click(() => {
         opacity: [0, 0.9],
         duration: 1000,
     });
+
+    anime({
+        targets: ['#contactate', '#visitanos', '#nosotros', '#svg-margin rect', '#social a'],
+        color: ['#FFF', '#000'],
+        easing: 'easeInOutSine',
+        stroke: ['#FFF', '#000'],
+        borderColor: ['#FFF', '#000'],
+        duration: 1000,
+    });
+
+    $('.black-highlight').css('background-image', 'linear-gradient(black, black)');
+
+    toHLColor = '#FFF';
+    fromHLColor = '#000';
 });
 
-$('#contactate').click(() => {
-    moveIn();
+$('#back-button').click(() => {
+    anime({
+        targets: '#cocinas-bg',
+        easing: 'easeInOutSine',
+        opacity: [0.9, 0],
+        duration: 1000,
+        complete: () => {
+            $('#cocinas-bg').css('display', 'none');
+        },
+    });
+
+    anime({
+        targets: ['#contactate', '#visitanos', '#nosotros', '#svg-margin rect', '#social a'],
+        color: ['#000', '#FFF'],
+        easing: 'easeInOutSine',
+        stroke: ['#000', '#FFF'],
+        borderColor: ['#000', '#FFF'],
+        duration: 1000,
+    });
+
+    $('.black-highlight').css('background-image', 'linear-gradient(white, white)');
+
+    toHLColor = '#000';
+    fromHLColor = '#FFF';
 });

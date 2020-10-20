@@ -1,39 +1,3 @@
-import Highway from '@dogstudio/highway';
-
-export class HomeRenderer extends Highway.Renderer {
-    onEnter() {
-        
-    }
-}
-
-export class CocinasTransition extends Highway.Transition{
-    in({from, to, done}) {
-        anime({
-            targets: to,
-            easing: 'easeInOutSine',
-            opacity: [0, 0.9],
-            duration: 1000,
-            complete: () => {
-                // from.style.opacity = 1;
-                // from.remove(); // DO NOT remove to avoid having to repeat intro animation 
-                done(); 
-            }
-        });
-    }
-    out({from, to, done}) {
-        $('#cocinas.wrapper').css('display', 'block');
-        anime({
-            targets: '#cocinas-wrapper',
-            easing: 'easeInOutSine',
-            opacity: [0.9, 0],
-            duration: 1000,
-            complete: () => {
-                $('#cocinas-wrapper').remove();
-                done(); 
-            }
-        });
-    }
-}
  
  // Intro
  export function introAnimation() {
@@ -59,13 +23,24 @@ export class CocinasTransition extends Highway.Transition{
         });
 
         anime({
-            targets: ['.fa', '#contactate'],
+            targets: ['.fa', '#contactate', '#nosotros', '#visitanos'],
             opacity: 1,
             easing: 'easeInOutSine',
             delay: anime.stagger(400),
             duration: 1000,
         });
     }, 1500);
+
+    setTimeout(() => {
+        $('#svg-margin').css('opacity', 1);
+        anime({
+            targets: '#svg-margin rect',
+            easing: 'easeInOutQuint',
+            strokeDashoffset: [anime.setDashoffset, 0],
+            opacity: [0, 1],
+            duration: 7000 // Default: 2000
+        });
+    }, 1000); // Default: 2700
 
     setTimeout(() => {
         $('#title').attr('style', 'display: block;');
@@ -141,7 +116,7 @@ export function darkenBlocks(exceptionBlock) {
         targets: exceptionBlock.getElementsByTagName('video')[0],
         easing: 'easeInOutCirc',
         duration: 300,
-        filter: ['brightness(70%)', 'brightness(100%)']
+        filter: ['brightness(80%)', 'brightness(100%)']
     });
 }
 export function lightenBlocks(exceptionBlock) {
@@ -156,6 +131,6 @@ export function lightenBlocks(exceptionBlock) {
         targets: exceptionBlock.getElementsByTagName('video')[0],
         easing: 'easeInOutCirc',
         duration: 300,
-        filter: ['brightness(100%)', 'brightness(70%)']
+        filter: ['brightness(100%)', 'brightness(80%)']
     });
 }

@@ -33,7 +33,7 @@ html, body {
     width: 40vw;
     transform: translate(-50%, -52.5%);
     position: absolute;
-    z-index: 3;
+    z-index: 2;
     top: 50%;
     left: 50%;
 
@@ -48,10 +48,10 @@ html, body {
     width:50%; 
     height:50%;
 
-    display: flex;
+    display: block;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    overflow-x: hidden;
     opacity: 0;
 }
 
@@ -63,9 +63,9 @@ html, body {
     flex-shrink: 0;
     min-width: 100%;
     min-height: 100%;
+    height: 115%;
 
-    overflow: hidden;
-    filter: brightness(70%);
+    filter: brightness(80%);
 }
 
 #NW { top:0;   left:0;}
@@ -74,7 +74,12 @@ html, body {
 #SE { top:50%; left:50%;}   
 
 .nav-button {
-    position: fixed;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
     z-index: 5 !important;
 
     border-style: solid;
@@ -97,10 +102,6 @@ html, body {
     white-space: nowrap;
     background-color: rgba(255, 255, 255, 0.1);
 }
-/* .nav-button a {
-    text-decoration: none;
-    color: white;
-} */
 .nav-button div:hover{
     color: black;
 }
@@ -116,35 +117,41 @@ html, body {
 }
 
 /* MARGIN */
-#margin {
+#svg-margin {
+    z-index: 3;
     pointer-events: none;
-    position: fixed;
-    z-index: 1;
+    position: absolute;
 
-    border-style: solid;
-    color: white;
+    opacity: 0;
 
-    /* border-width: 2px;
-    width: calc(100vw - (10px + 2px)*2);
-    height: calc(100vh - (10px + 2px)*2);
-    margin: 10px; */
+    width: 100vw;
+    height: 100vh;
 
-    border-width: 10px;
-    width: calc(100vw - 10px*2);
-    height: calc(100vh - 10px*2);
-    margin: 0px;
+    /* top right bottom left */
+    clip-path: polygon(0% 0%, 44% 0, 37% 33%, 64% 32%, 57% 0, 100% 0%, 100% 41%, 62% 40%, 65% 66%, 100% 59%, 100% 100%, 60% 100%, 65% 72%, 39% 75%, 39% 100%, 0% 100%, 0 60%, 38% 68%, 37% 45%, 0 41%);
+
+}
+#svg-margin rect {
+    fill: none;
+    stroke-width: 2px;
+    stroke:white;
+
+    width: calc(100vw - 50px);
+    height: calc(100vh - 50px);
+
+    transform: translate(25px, 25px);
 }
 
 
 /* SOCIAL ICONS */
 #social {
-    z-index: 2;
+    z-index: 3;
     position: fixed;
 
     transform: translate(-50%, 0);
 
     left: 50vw;
-    bottom: 20px;
+    bottom: -5px;
 }
 #social a {
     font-size: 30px;
@@ -156,20 +163,18 @@ html, body {
 
     opacity: 0;
 }
-#social a:hover {
-    /* color: #158DA5; */
+/* #social a:hover {
+    /* color: #158DA5;
     color: black;
     filter: drop-shadow(0px 3px 3px rgba(255, 255, 255, 0.1));
-}
+} */
 
 
 /* TEXT BUTTONS */
-#contactate {
+.text-but {
     color: white;
     font-family: 'Roboto', sans-serif;
-    font-size: 1rem;
     font-weight: 900;
-    letter-spacing: 0.075em;
 
     border-bottom: 2px solid white;
     padding-bottom: 3px;
@@ -177,21 +182,43 @@ html, body {
     z-index: 10;
     display: block;
     position: absolute;
-    left: calc(50vw - 7.5ch);
-    top: 20px;
     text-align: center;
 
     cursor: pointer;
 
     opacity: 0;
 }
-
 .black-highlight {
-    background-image: linear-gradient(black, black);
+    background-image: linear-gradient(white, white);
     background-repeat: no-repeat;
     background-position: right bottom;
     background-size: 0% 1rem;
 }
+
+#contactate {
+    left: calc(50vw - 7.5ch);
+    top: 20px;
+
+    font-size: 1rem;
+    letter-spacing: 0.075em;
+}
+#visitanos {
+    left: -30px;
+    top: calc(50vh - 1ch);
+    transform: rotate(-90deg);
+
+    font-size: 1.1rem;
+    letter-spacing: 0.18em;
+}
+#nosotros {
+    right: -30px;
+    top: calc(50vh - 1ch);
+    transform: rotate(90deg);
+
+    font-size: 1.1rem;
+    letter-spacing: 0.18em;
+}
+
 
 /* COCINAS */
 #cocinas-bg {
@@ -200,7 +227,7 @@ html, body {
     width: 100vw;
     background-color: white;
     padding: 0;
-    z-index: 100;
+    z-index: 2;
     display: none;
 
     opacity: 0;
@@ -208,6 +235,7 @@ html, body {
 
 #back-button {
     font-size: 30px;
+    cursor: pointer;
 
     margin: 20px;
     position: fixed;
