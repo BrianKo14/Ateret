@@ -20,6 +20,7 @@
   "dependencies": {
     "@dogstudio/highway": "^2.2.1",
     "anim.js": "0.0.1",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "parcel-bundler": "^1.12.4"
   }
 }
