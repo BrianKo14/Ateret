@@ -29,18 +29,18 @@
             delay: anime.stagger(400),
             duration: 1000,
         });
-    }, 1500);
+    }, 500);
 
     setTimeout(() => {
         $('#svg-margin').css('opacity', 1);
         anime({
             targets: '#svg-margin rect',
-            easing: 'easeInOutQuint',
-            strokeDashoffset: [anime.setDashoffset, 0],
+            easing: 'easeInOutSine',
+            // strokeDashoffset: [anime.setDashoffset, 0],
             opacity: [0, 1],
-            duration: 7000 // Default: 2000
+            duration: 2000 // Default: 3500
         });
-    }, 1000); // Default: 2700
+    }, 2000);
 
     setTimeout(() => {
         $('#title').attr('style', 'display: block;');
@@ -63,6 +63,7 @@ export function drawLogo() {
     .add({
         targets: '#lines line',
         strokeDashoffset: [anime.setDashoffset, 0],
+        opacity: [0, 1],
         duration: 1200
     }, '-=3500')
     .add({

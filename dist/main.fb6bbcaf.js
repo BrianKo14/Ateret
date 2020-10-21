@@ -156,19 +156,18 @@ function introAnimation() {
       delay: anime.stagger(400),
       duration: 1000
     });
-  }, 1500);
+  }, 500);
   setTimeout(function () {
     $('#svg-margin').css('opacity', 1);
     anime({
       targets: '#svg-margin rect',
-      easing: 'easeInOutQuint',
-      strokeDashoffset: [anime.setDashoffset, 0],
+      easing: 'easeInOutSine',
+      // strokeDashoffset: [anime.setDashoffset, 0],
       opacity: [0, 1],
-      duration: 7000 // Default: 2000
+      duration: 2000 // Default: 3500
 
     });
-  }, 1000); // Default: 2700
-
+  }, 2000);
   setTimeout(function () {
     $('#title').attr('style', 'display: block;');
     drawLogo();
@@ -187,6 +186,7 @@ function drawLogo() {
   }).add({
     targets: '#lines line',
     strokeDashoffset: [anime.setDashoffset, 0],
+    opacity: [0, 1],
     duration: 1200
   }, '-=3500').add({
     targets: '#ateret path',
@@ -264,6 +264,12 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
+var isMobile = false;
+
+if (/Android|webOS|iPhone|iPad|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+  isMobile = true;
+}
+
 Anim.introAnimation(); // Button animation
 
 $('.nav-button div').hover(function (e) {
@@ -302,7 +308,7 @@ $('.black-highlight').hover(function (e) {
     easing: 'easeInSine',
     duration: 200,
     color: toHLColor,
-    borderBottom: '2px solid ' + toHLColor,
+    borderColor: toHLColor,
     backgroundSize: ['0% 1.4rem', '100% 1.4rem'],
     complete: function complete() {
       e.target.style.backgroundPosition = 'left bottom';
@@ -314,7 +320,7 @@ $('.black-highlight').hover(function (e) {
     easing: 'easeInSine',
     duration: 200,
     color: fromHLColor,
-    borderBottom: '2px solid ' + fromHLColor,
+    borderColor: fromHLColor,
     backgroundSize: ['100% 1.4rem', '0% 1.4rem'],
     complete: function complete() {
       e.target.style.backgroundPosition = 'right bottom';
@@ -392,7 +398,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64873" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54471" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

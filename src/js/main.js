@@ -1,5 +1,10 @@
 import * as Anim from './anim.js';
 
+var isMobile = false;
+if (/Android|webOS|iPhone|iPad|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    isMobile = true;
+}
+
 Anim.introAnimation();
 
 // Button animation
@@ -46,7 +51,7 @@ $('.black-highlight').hover(
             easing: 'easeInSine',
             duration: 200,
             color: toHLColor,
-            borderBottom: '2px solid ' + toHLColor,
+            borderColor: toHLColor,
             backgroundSize: ['0% 1.4rem', '100% 1.4rem'],
             complete: () => {
                 e.target.style.backgroundPosition = 'left bottom';
@@ -59,7 +64,7 @@ $('.black-highlight').hover(
             easing: 'easeInSine',
             duration: 200,
             color: fromHLColor,
-            borderBottom: '2px solid ' + fromHLColor,
+            borderColor: fromHLColor,
             backgroundSize: ['100% 1.4rem', '0% 1.4rem'],
             complete: () => {
                 e.target.style.backgroundPosition = 'right bottom';

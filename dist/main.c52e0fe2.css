@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
 
 html, body {
-    height:100%;
-    margin:0;
-    padding:0;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
 
     background-color: black;
 }
@@ -41,17 +42,17 @@ html, body {
 }
 
 
-
 /* NAVIGATION */
 .nav-block {
     position: fixed; 
-    width:50%; 
-    height:50%;
+    width: 50%; 
+    height: 50%;
 
     display: block;
     justify-content: center;
     align-items: center;
     overflow-x: hidden;
+    overflow: hidden;
     opacity: 0;
 }
 
@@ -61,9 +62,10 @@ html, body {
     margin: 0;
 
     flex-shrink: 0;
-    min-width: 100%;
-    min-height: 100%;
-    height: 115%;
+    /* min-width: 115%; */
+    min-height: 115%;
+    /* max-width: 130%; */
+    max-height: 130%;
 
     filter: brightness(80%);
 }
@@ -95,12 +97,14 @@ html, body {
     letter-spacing: 0.075em;
     height: 3rem;
     line-height: 3rem;
-    padding: 0 2rem;
     text-align: center;
     text-decoration: none;
     text-transform: uppercase;
     white-space: nowrap;
     background-color: rgba(255, 255, 255, 0.1);
+}
+.nav-button div{
+    padding: 0 2rem;
 }
 .nav-button div:hover{
     color: black;
@@ -116,6 +120,7 @@ html, body {
     background-color: white;
 }
 
+
 /* MARGIN */
 #svg-margin {
     z-index: 3;
@@ -127,8 +132,22 @@ html, body {
     width: 100vw;
     height: 100vh;
 
-    /* top right bottom left */
-    clip-path: polygon(0% 0%, 44% 0, 37% 33%, 64% 32%, 57% 0, 100% 0%, 100% 41%, 62% 40%, 65% 66%, 100% 59%, 100% 100%, 60% 100%, 65% 72%, 39% 75%, 39% 100%, 0% 100%, 0 60%, 38% 68%, 37% 45%, 0 41%);
+    clip-path: polygon(0% 0%,
+        calc(50% - 90px) 0, /**/
+        calc(50% - 90px) 50%, calc(50% + 90px) 50%,
+        calc(50% + 90px) 0, /**/
+        100% 0%,
+        100% calc(50% - 80px), /**/
+        50% calc(50% - 80px), 50% calc(50% + 80px),
+        100% calc(50% + 80px), /**/
+        100% 100%,
+        calc(50% + 150px) 100%, /**/
+        calc(50% + 150px) 50%, calc(50% - 150px) 50%,
+        calc(50% - 150px) 100%, /**/
+        0% 100%,
+        0 calc(50% + 80px), /**/
+        50% calc(50% + 80px), 50% calc(50% - 80px),
+        0 calc(50% - 80px) /**/);
 
 }
 #svg-margin rect {
@@ -163,11 +182,6 @@ html, body {
 
     opacity: 0;
 }
-/* #social a:hover {
-    /* color: #158DA5;
-    color: black;
-    filter: drop-shadow(0px 3px 3px rgba(255, 255, 255, 0.1));
-} */
 
 
 /* TEXT BUTTONS */
@@ -200,7 +214,7 @@ html, body {
     top: 20px;
 
     font-size: 1rem;
-    letter-spacing: 0.075em;
+    letter-spacing: 0.075em; 
 }
 #visitanos {
     left: -30px;
@@ -245,6 +259,81 @@ html, body {
 
     left: 30px;
     top: 30px;
+}
+
+/* MOBILE DEVICES */
+@media only screen and (max-device-width: 1000px) and (orientation: portrait) {
+    #title {
+        width: 70vw;
+    }
+
+    .nav-button {
+        font-size: 1.3rem;
+        letter-spacing: 0.1em;
+        line-height: 3.2rem;
+
+        border-width: 3px;
+
+        padding: 12px;
+    }
+
+    #contactate {
+        font-size: 1.5rem;
+        letter-spacing: 0.075em;
+
+        border-bottom: 3px solid white;
+        padding-bottom: 4px;
+
+    }
+    #visitanos {
+        left: -40px;
+
+        font-size: 1.6rem;
+        letter-spacing: 0.18em;
+
+        border-bottom: 3px solid white;
+        padding-bottom: 4px;
+    }
+    #nosotros {
+        right: -40px;
+
+        font-size: 1.6rem;
+        letter-spacing: 0.18em;
+
+        border-bottom: 3px solid white;
+        padding-bottom: 4px;
+    }
+
+    #svg-margin rect {
+        stroke-width: 6px;
+    
+        width: calc(100vw - 70px);
+        height: calc(100vh - 70px);
+
+        transform: translate(35px, 35px);
+
+        clip-path: polygon(0% 0%,
+            calc(50% - 130px) 0, /**/
+            calc(50% - 130px) 50%, calc(50% + 130px) 50%,
+            calc(50% + 130px) 0, /**/
+            100% 0%,
+            100% calc(50% - 110px), /**/
+            50% calc(50% - 110px), 50% calc(50% + 110px),
+            100% calc(50% + 130px), /**/
+            100% 100%,
+            calc(50% + 210px) 100%, /**/
+            calc(50% + 210px) 50%, calc(50% - 210px) 50%,
+            calc(50% - 210px) 100%, /**/
+            0% 100%,
+            0 calc(50% + 130px), /**/
+            50% calc(50% + 130px), 50% calc(50% - 130px),
+            0 calc(50% - 110px) /**/);
+    }
+
+    #social a {
+        font-size: 50px;
+        margin: 25px;
+    }
 }
 
 /*# sourceMappingURL=/main.c52e0fe2.css.map */
