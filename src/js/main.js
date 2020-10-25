@@ -1,9 +1,28 @@
 import * as Anim from './anim.js';
 
+
 var isMobile = false;
 if (/Android|webOS|iPhone|iPad|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-    isMobile = true;
+    console.log('[Mobile mode]');
+
+    // Prevent dragging
+    document.addEventListener("touchmove", (e) => { e.preventDefault(); }, {passive: false});
+
+    changeOrientation();
+
+    $(window).on("orientationchange", e => {
+        changeOrientation();
+    });
 }
+
+function changeOrientation() {
+    if (window.innerHeight > window.innerWidth) { // Portrait
+        $('#svg-margin rect').css('height', (window.innerHeight - 70) + 'px');
+    } else { // Landscape
+        $('#svg-margin rect').css('height', (window.innerWidth - 20) + 'px');
+    }
+}
+
 
 Anim.introAnimation();
 
