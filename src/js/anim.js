@@ -23,7 +23,7 @@
         });
 
         anime({
-            targets: ['.fa', '#contactate', '#nosotros', '#visitanos'],
+            targets: '.fa',
             opacity: 1,
             easing: 'easeInOutSine',
             delay: anime.stagger(400),
@@ -39,6 +39,13 @@
             // strokeDashoffset: [anime.setDashoffset, 0],
             opacity: [0, 1],
             duration: 2000 // Default: 3500
+        });
+
+        anime({
+            targets: ['#contactate', '#nosotros', '#visitanos'],
+            opacity: 1,
+            easing: 'easeInOutSine',
+            duration: 1000,
         });
     }, 2000);
 

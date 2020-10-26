@@ -150,7 +150,7 @@ function introAnimation() {
       }
     });
     anime({
-      targets: ['.fa', '#contactate', '#nosotros', '#visitanos'],
+      targets: '.fa',
       opacity: 1,
       easing: 'easeInOutSine',
       delay: anime.stagger(400),
@@ -166,6 +166,12 @@ function introAnimation() {
       opacity: [0, 1],
       duration: 2000 // Default: 3500
 
+    });
+    anime({
+      targets: ['#contactate', '#nosotros', '#visitanos'],
+      opacity: 1,
+      easing: 'easeInOutSine',
+      duration: 1000
     });
   }, 2000);
   setTimeout(function () {
@@ -255,10 +261,83 @@ function lightenBlocks(exceptionBlock) {
     filter: ['brightness(100%)', 'brightness(80%)']
   });
 }
+},{}],"js/list.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.startSite = startSite;
+var currentSite = "home";
+var pos, selected;
+var dlNames, dsNames;
+var length, height, width;
+
+function startSite(name) {
+  // Set query name for this site
+  currentSite = name;
+  dlNames = "#".concat(currentSite, "-bg .dynamic-list .dl-row");
+  dsNames = "#".concat(currentSite, "-bg .dynamic-slideshow .ds-row"); // Get number of rows
+
+  length = $(dlNames).length; // Get rows' size
+
+  $(dlNames).each(function () {
+    height = parseInt($(this).css('height').replace('%', ''));
+    width = parseInt($(this).css('width').replace('%', ''));
+  });
+  pos = selected = 0;
+  slide();
+}
+
+function slide() {
+  $(dlNames).each(function (indx) {
+    // Math functions: https://www.desmos.com/calculator/zn2tmgp3k5
+    // Position
+    var x = pos - indx - 0;
+    var w = -1,
+        a = -10,
+        h = -15.2;
+    var part = Math.tanh(a * x / w - a * Math.floor(x / w) - a / 2) / (2 * Math.tanh(a / 2));
+    var offset = h * (part + 0.5 + Math.floor(x / w));
+    $(this).css('top', 50 - height / 2 - offset + '%'); // Z-index
+
+    $(this).css('z-index', 20 - Math.abs(pos - indx)); // Size
+
+    var sigma = 0.9;
+    var size = 1 / (sigma * Math.sqrt(2 * Math.PI)) * Math.exp(-0.5 * Math.pow((indx - pos) / sigma, 2)) + 0.8;
+    size *= 0.8;
+    $(this).css('transform', "scale(".concat(size, ")")); // Opacity
+
+    $(this).css('opacity', "".concat(Math.pow(size, 7))); // Selected
+
+    if (Math.abs(pos - indx) < 0.5) {
+      selected = indx;
+      $(dsNames).each(function (dsIndx) {
+        if (dsIndx == selected) {
+          $(dsNames).eq(dsIndx).css('display', 'block');
+        } else {
+          $(dsNames).eq(dsIndx).css('display', 'none');
+        }
+      });
+    }
+  });
+}
+
+$(document).bind('mousewheel', function (e) {
+  var delta = e.originalEvent.wheelDelta;
+  delta *= -0.01;
+
+  if (pos + delta >= 0 && pos + delta <= length - 1) {
+    pos += delta;
+    slide();
+  }
+});
 },{}],"js/main.js":[function(require,module,exports) {
 "use strict";
 
 var Anim = _interopRequireWildcard(require("./anim.js"));
+
+var List = _interopRequireWildcard(require("./list.js"));
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
@@ -346,14 +425,16 @@ $('.black-highlight').hover(function (e) {
       e.target.style.backgroundPosition = 'right bottom';
     }
   });
-}); // Cocinas
+});
 
-$('#cocinas-button').click(function () {
-  $('#cocinas-bg').css('display', 'block');
+function changeToSite(name) {
+  List.startSite(name);
+  $("#".concat(name, "-bg")).css('display', 'block');
   anime({
-    targets: '#cocinas-bg',
+    targets: "#".concat(name, "-bg"),
     easing: 'easeInOutSine',
-    opacity: [0, 0.9],
+    opacity: [0, 1],
+    backgroundColor: 'rgba(255, 255, 255, 0.9)',
     duration: 1000
   });
   anime({
@@ -367,15 +448,17 @@ $('#cocinas-button').click(function () {
   $('.black-highlight').css('background-image', 'linear-gradient(black, black)');
   toHLColor = '#FFF';
   fromHLColor = '#000';
-});
-$('#back-button').click(function () {
+}
+
+function changeFromSite(name) {
   anime({
-    targets: '#cocinas-bg',
+    targets: "#".concat(name, "-bg"),
     easing: 'easeInOutSine',
-    opacity: [0.9, 0],
+    opacity: [1, 0],
+    backgroundColor: 'rgba(255, 255, 255, 0)',
     duration: 1000,
     complete: function complete() {
-      $('#cocinas-bg').css('display', 'none');
+      $("#".concat(name, "-bg")).css('display', 'none');
     }
   });
   anime({
@@ -389,8 +472,24 @@ $('#back-button').click(function () {
   $('.black-highlight').css('background-image', 'linear-gradient(white, white)');
   toHLColor = '#000';
   fromHLColor = '#FFF';
-});
-},{"./anim.js":"js/anim.js"}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+}
+
+var sites = ['cocinas', 'mesadas', 'electrodomesticos', 'placard'];
+sites.forEach(function (site) {
+  $("#".concat(site, "-button")).click(function () {
+    changeToSite(site);
+  });
+  $("#".concat(site, "-back-button")).click(function () {
+    changeFromSite(site);
+  });
+}); // Cocinas
+// $('#cocinas-button').click(() => {
+//     changeToSite('cocinas');
+// });
+// $('#back-button').click(() => {
+//     changeFromSite('cocinas');
+// });
+},{"./anim.js":"js/anim.js","./list.js":"js/list.js"}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -418,7 +517,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53001" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55975" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

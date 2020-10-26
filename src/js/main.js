@@ -1,5 +1,5 @@
 import * as Anim from './anim.js';
-
+import * as List from './list.js';
 
 var isMobile = false;
 if (/Android|webOS|iPhone|iPad|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
@@ -89,17 +89,18 @@ $('.black-highlight').hover(
                 e.target.style.backgroundPosition = 'right bottom';
             },
         });
-
     }
 );
 
-// Cocinas
-$('#cocinas-button').click(() => {
-    $('#cocinas-bg').css('display', 'block');
+function changeToSite(name) {
+    List.startSite(name);
+
+    $(`#${name}-bg`).css('display', 'block');
     anime({
-        targets: '#cocinas-bg',
+        targets: `#${name}-bg`,
         easing: 'easeInOutSine',
-        opacity: [0, 0.9],
+        opacity: [0, 1],
+        backgroundColor: 'rgba(255, 255, 255, 0.9)',
         duration: 1000,
     });
 
@@ -116,16 +117,16 @@ $('#cocinas-button').click(() => {
 
     toHLColor = '#FFF';
     fromHLColor = '#000';
-});
-
-$('#back-button').click(() => {
+}
+function changeFromSite(name) {
     anime({
-        targets: '#cocinas-bg',
+        targets: `#${name}-bg`,
         easing: 'easeInOutSine',
-        opacity: [0.9, 0],
+        opacity: [1, 0],
+        backgroundColor: 'rgba(255, 255, 255, 0)',
         duration: 1000,
         complete: () => {
-            $('#cocinas-bg').css('display', 'none');
+            $(`#${name}-bg`).css('display', 'none');
         },
     });
 
@@ -142,4 +143,24 @@ $('#back-button').click(() => {
 
     toHLColor = '#000';
     fromHLColor = '#FFF';
+}
+
+const sites = ['cocinas', 'mesadas', 'electrodomesticos', 'placard']
+sites.forEach(site => {
+    $(`#${site}-button`).click(() => {
+        changeToSite(site);
+    });
+
+    $(`#${site}-back-button`).click(() => {
+        changeFromSite(site);
+    });
 });
+
+// Cocinas
+// $('#cocinas-button').click(() => {
+//     changeToSite('cocinas');
+// });
+
+// $('#back-button').click(() => {
+//     changeFromSite('cocinas');
+// });

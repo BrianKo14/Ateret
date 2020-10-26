@@ -117,79 +117,78 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
-var bundleURL = null;
+})({"js/list.js":[function(require,module,exports) {
+"use strict";
 
-function getBundleURLCached() {
-  if (!bundleURL) {
-    bundleURL = getBundleURL();
-  }
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.startSite = startSite;
+var currentSite = "home";
+var pos, selected;
+var dlNames, dsNames;
+var length, height, width;
 
-  return bundleURL;
+function startSite(name) {
+  // Set query name for this site
+  currentSite = name;
+  dlNames = "#".concat(currentSite, "-bg .dynamic-list .dl-row");
+  dsNames = "#".concat(currentSite, "-bg .dynamic-slideshow .ds-row"); // Get number of rows
+
+  length = $(dlNames).length; // Get rows' size
+
+  $(dlNames).each(function () {
+    height = parseInt($(this).css('height').replace('%', ''));
+    width = parseInt($(this).css('width').replace('%', ''));
+  });
+  pos = selected = 0;
+  slide();
 }
 
-function getBundleURL() {
-  // Attempt to find the URL of the current script and use that as the base URL
-  try {
-    throw new Error();
-  } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
+function slide() {
+  $(dlNames).each(function (indx) {
+    // Math functions: https://www.desmos.com/calculator/zn2tmgp3k5
+    // Position
+    var x = pos - indx - 0;
+    var w = -1,
+        a = -10,
+        h = -15.2;
+    var part = Math.tanh(a * x / w - a * Math.floor(x / w) - a / 2) / (2 * Math.tanh(a / 2));
+    var offset = h * (part + 0.5 + Math.floor(x / w));
+    $(this).css('top', 50 - height / 2 - offset + '%'); // Z-index
 
-    if (matches) {
-      return getBaseURL(matches[0]);
+    $(this).css('z-index', 20 - Math.abs(pos - indx)); // Size
+
+    var sigma = 0.9;
+    var size = 1 / (sigma * Math.sqrt(2 * Math.PI)) * Math.exp(-0.5 * Math.pow((indx - pos) / sigma, 2)) + 0.8;
+    size *= 0.8;
+    $(this).css('transform', "scale(".concat(size, ")")); // Opacity
+
+    $(this).css('opacity', "".concat(Math.pow(size, 7))); // Selected
+
+    if (Math.abs(pos - indx) < 0.5) {
+      selected = indx;
+      $(dsNames).each(function (dsIndx) {
+        if (dsIndx == selected) {
+          $(dsNames).eq(dsIndx).css('display', 'block');
+        } else {
+          $(dsNames).eq(dsIndx).css('display', 'none');
+        }
+      });
     }
+  });
+}
+
+$(document).bind('mousewheel', function (e) {
+  var delta = e.originalEvent.wheelDelta;
+  delta *= -0.01;
+
+  if (pos + delta >= 0 && pos + delta <= length - 1) {
+    pos += delta;
+    slide();
   }
-
-  return '/';
-}
-
-function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
-}
-
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-},{}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
-var bundle = require('./bundle-url');
-
-function updateLink(link) {
-  var newLink = link.cloneNode();
-
-  newLink.onload = function () {
-    link.remove();
-  };
-
-  newLink.href = link.href.split('?')[0] + '?' + Date.now();
-  link.parentNode.insertBefore(newLink, link.nextSibling);
-}
-
-var cssTimeout = null;
-
-function reloadCSS() {
-  if (cssTimeout) {
-    return;
-  }
-
-  cssTimeout = setTimeout(function () {
-    var links = document.querySelectorAll('link[rel="stylesheet"]');
-
-    for (var i = 0; i < links.length; i++) {
-      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
-        updateLink(links[i]);
-      }
-    }
-
-    cssTimeout = null;
-  }, 50);
-}
-
-module.exports = reloadCSS;
-},{"./bundle-url":"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"css/main.css":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+});
+},{}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -393,5 +392,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js"], null)
-//# sourceMappingURL=/main.c52e0fe2.js.map
+},{}]},{},["../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/list.js"], null)
+//# sourceMappingURL=/list.b369b42c.js.map
