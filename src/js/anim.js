@@ -8,7 +8,7 @@
             opacity: [0, 1],
             duration: 2000
         })
-    }, 1000);
+    }, 3000);
 
     setTimeout(() => {
         anime({
@@ -29,7 +29,7 @@
             delay: anime.stagger(400),
             duration: 1000,
         });
-    }, 500);
+    }, 2500);
 
     setTimeout(() => {
         $('#svg-margin').css('opacity', 1);
@@ -47,7 +47,7 @@
             easing: 'easeInOutSine',
             duration: 1000,
         });
-    }, 2000);
+    }, 4000);
 
     setTimeout(() => {
         $('#title').attr('style', 'display: block;');
@@ -80,7 +80,7 @@ export function drawLogo() {
     }, '-=1200')
     .add({
         targets: '#cocinas path',
-        fill: ['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 1)'],
+        fill: ['rgba(255, 255, 255, 0)', 'rgba(255, 255, 255, 1)'],
         duration: 800
     }, '-=1500');
 }
@@ -107,7 +107,7 @@ export function eraseLogo() {
     }, '-=300')
     .add({
         targets: '#cocinas path',
-        fill: ['rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 0)'],
+        fill: ['rgba(255, 255, 255, 1)', 'rgba(255, 255, 255, 0)'],
         duration: 200
     }, '-=375');
 }

@@ -149,18 +149,10 @@ const sites = ['cocinas', 'mesadas', 'electrodomesticos', 'placard']
 sites.forEach(site => {
     $(`#${site}-button`).click(() => {
         changeToSite(site);
+        console.log('hey');
     });
 
     $(`#${site}-back-button`).click(() => {
         changeFromSite(site);
     });
 });
-
-// Cocinas
-// $('#cocinas-button').click(() => {
-//     changeToSite('cocinas');
-// });
-
-// $('#back-button').click(() => {
-//     changeFromSite('cocinas');
-// });

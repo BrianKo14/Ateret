@@ -38,14 +38,14 @@ function slide() {
 
         $(this).css('top', (50 - height/2 - offset) + '%');
 
-        // Z-index
-        $(this).css('z-index', (20 - Math.abs(pos-indx)))
-
         // Size
         const sigma = 0.9;
         var size = (1/(sigma*Math.sqrt(2*Math.PI))) * Math.exp((-0.5)*((indx - pos)/sigma)**2) + 0.8;
         size *= 0.8;
         $(this).css('transform', `scale(${size})`);
+
+        // Z-index
+        $(this).css('z-index', Math.round(20 + size*10))
 
         // Opacity
         $(this).css('opacity', `${size**7}`);

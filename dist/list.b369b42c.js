@@ -155,14 +155,14 @@ function slide() {
         h = -15.2;
     var part = Math.tanh(a * x / w - a * Math.floor(x / w) - a / 2) / (2 * Math.tanh(a / 2));
     var offset = h * (part + 0.5 + Math.floor(x / w));
-    $(this).css('top', 50 - height / 2 - offset + '%'); // Z-index
-
-    $(this).css('z-index', 20 - Math.abs(pos - indx)); // Size
+    $(this).css('top', 50 - height / 2 - offset + '%'); // Size
 
     var sigma = 0.9;
     var size = 1 / (sigma * Math.sqrt(2 * Math.PI)) * Math.exp(-0.5 * Math.pow((indx - pos) / sigma, 2)) + 0.8;
     size *= 0.8;
-    $(this).css('transform', "scale(".concat(size, ")")); // Opacity
+    $(this).css('transform', "scale(".concat(size, ")")); // Z-index
+
+    $(this).css('z-index', Math.round(20 + size * 10)); // Opacity
 
     $(this).css('opacity', "".concat(Math.pow(size, 7))); // Selected
 
@@ -216,7 +216,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55975" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59197" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

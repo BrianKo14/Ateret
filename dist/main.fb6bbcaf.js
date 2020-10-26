@@ -138,7 +138,7 @@ function introAnimation() {
       opacity: [0, 1],
       duration: 2000
     });
-  }, 1000);
+  }, 3000);
   setTimeout(function () {
     anime({
       targets: ['#NW', '#SE'],
@@ -156,7 +156,7 @@ function introAnimation() {
       delay: anime.stagger(400),
       duration: 1000
     });
-  }, 500);
+  }, 2500);
   setTimeout(function () {
     $('#svg-margin').css('opacity', 1);
     anime({
@@ -173,7 +173,7 @@ function introAnimation() {
       easing: 'easeInOutSine',
       duration: 1000
     });
-  }, 2000);
+  }, 4000);
   setTimeout(function () {
     $('#title').attr('style', 'display: block;');
     drawLogo();
@@ -200,7 +200,7 @@ function drawLogo() {
     duration: 800
   }, '-=1200').add({
     targets: '#cocinas path',
-    fill: ['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 1)'],
+    fill: ['rgba(255, 255, 255, 0)', 'rgba(255, 255, 255, 1)'],
     duration: 800
   }, '-=1500');
 }
@@ -224,7 +224,7 @@ function eraseLogo() {
     duration: 200
   }, '-=300').add({
     targets: '#cocinas path',
-    fill: ['rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 0)'],
+    fill: ['rgba(255, 255, 255, 1)', 'rgba(255, 255, 255, 0)'],
     duration: 200
   }, '-=375');
 }
@@ -299,14 +299,14 @@ function slide() {
         h = -15.2;
     var part = Math.tanh(a * x / w - a * Math.floor(x / w) - a / 2) / (2 * Math.tanh(a / 2));
     var offset = h * (part + 0.5 + Math.floor(x / w));
-    $(this).css('top', 50 - height / 2 - offset + '%'); // Z-index
-
-    $(this).css('z-index', 20 - Math.abs(pos - indx)); // Size
+    $(this).css('top', 50 - height / 2 - offset + '%'); // Size
 
     var sigma = 0.9;
     var size = 1 / (sigma * Math.sqrt(2 * Math.PI)) * Math.exp(-0.5 * Math.pow((indx - pos) / sigma, 2)) + 0.8;
     size *= 0.8;
-    $(this).css('transform', "scale(".concat(size, ")")); // Opacity
+    $(this).css('transform', "scale(".concat(size, ")")); // Z-index
+
+    $(this).css('z-index', Math.round(20 + size * 10)); // Opacity
 
     $(this).css('opacity', "".concat(Math.pow(size, 7))); // Selected
 
@@ -478,17 +478,12 @@ var sites = ['cocinas', 'mesadas', 'electrodomesticos', 'placard'];
 sites.forEach(function (site) {
   $("#".concat(site, "-button")).click(function () {
     changeToSite(site);
+    console.log('hey');
   });
   $("#".concat(site, "-back-button")).click(function () {
     changeFromSite(site);
   });
-}); // Cocinas
-// $('#cocinas-button').click(() => {
-//     changeToSite('cocinas');
-// });
-// $('#back-button').click(() => {
-//     changeFromSite('cocinas');
-// });
+});
 },{"./anim.js":"js/anim.js","./list.js":"js/list.js"}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -517,7 +512,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55975" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59197" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

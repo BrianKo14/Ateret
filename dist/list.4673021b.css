@@ -1,3 +1,5 @@
+
+/* List */
 .dynamic-list {
     position: absolute;
     width: 45%;
@@ -5,8 +7,6 @@
 
     right: 5%;
     top: 5%;
-
-    /* background-color: blue; */
 }
 
 .dl-row {
@@ -21,15 +21,14 @@
     border: 5px solid black;
 }
 
+/* Slideshow */
 .dynamic-slideshow {
     position: absolute;
     width: 45%;
-    height: 82%;
+    height: 65%;
 
     left: 5%;
-    top: 10%;
-
-    background-color: blue;
+    top: 25%;
 }
 
 .ds-row {
@@ -40,6 +39,25 @@
     display: none;
 
     background-color: red;
+}
+
+
+/* Title */
+.section-title {
+    position: absolute;
+    width: 45%;
+    height: 12%;
+
+    left: 5%;
+    top: 10%;
+
+    display: flex;
+    justify-content: center; /* align horizontal */
+    align-items: center; /* align vertical */
+
+    font-family: 'Staatliches', cursive;
+    color: black;
+    /* text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; */
 }
 
 /*# sourceMappingURL=/list.4673021b.css.map */
