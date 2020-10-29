@@ -4,5 +4,6 @@ app.use(express.json());
 
 // Server static files
 app.listen(process.env.PORT || 3000, () => {
-    app.use(express.static('src'));
+    app.use(express.static('public'));
 });
+
