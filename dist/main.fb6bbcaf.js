@@ -40542,12 +40542,31 @@ function load3D(file, domElement, size, zPos, yPos) {
 
   animate();
 }
-},{"three":"../node_modules/three/build/three.module.js","three/examples/jsm/loaders/GLTFLoader.js":"../node_modules/three/examples/jsm/loaders/GLTFLoader.js","three/examples/jsm/controls/OrbitControls.js":"../node_modules/three/examples/jsm/controls/OrbitControls.js","../images/*.glb":"images/*.glb"}],"js/main.js":[function(require,module,exports) {
+},{"three":"../node_modules/three/build/three.module.js","three/examples/jsm/loaders/GLTFLoader.js":"../node_modules/three/examples/jsm/loaders/GLTFLoader.js","three/examples/jsm/controls/OrbitControls.js":"../node_modules/three/examples/jsm/controls/OrbitControls.js","../images/*.glb":"images/*.glb"}],"images/A_logo.png":[function(require,module,exports) {
+module.exports = "/A_logo.36d9f954.png";
+},{}],"images/HeaderStorePic.png":[function(require,module,exports) {
+module.exports = "/HeaderStorePic.197203ed.png";
+},{}],"images/Logo.png":[function(require,module,exports) {
+module.exports = "/Logo.40c5b796.png";
+},{}],"images/map-marker.png":[function(require,module,exports) {
+module.exports = "/map-marker.69464b76.png";
+},{}],"images/*.png":[function(require,module,exports) {
+module.exports = {
+  "A_logo": require("./A_logo.png"),
+  "HeaderStorePic": require("./HeaderStorePic.png"),
+  "Logo": require("./Logo.png"),
+  "map-marker": require("./map-marker.png")
+};
+},{"./A_logo.png":"images/A_logo.png","./HeaderStorePic.png":"images/HeaderStorePic.png","./Logo.png":"images/Logo.png","./map-marker.png":"images/map-marker.png"}],"js/main.js":[function(require,module,exports) {
 "use strict";
 
 var Anim = _interopRequireWildcard(require("./anim.js"));
 
 var List = _interopRequireWildcard(require("./list.js"));
+
+var _ = _interopRequireDefault(require("../images/*.png"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
@@ -40576,7 +40595,7 @@ function changeOrientation() {
   }
 }
 
-Anim.introAnimation(); // Button animation
+Anim.introAnimation(); // BLOCK BUTTONS
 
 if (!isMobile) {
   $('.nav-button div').hover(function (e) {
@@ -40637,7 +40656,18 @@ if (!isMobile) {
       }
     });
   });
-}
+} // CHANGE SECTION
+
+
+var sites = ['cocinas', 'mesadas', 'electrodomesticos', 'placard'];
+sites.forEach(function (site) {
+  $("#".concat(site, "-button")).click(function () {
+    changeToSite(site);
+  });
+  $("#".concat(site, "-back-button")).click(function () {
+    changeFromSite(site);
+  });
+});
 
 function changeToSite(name) {
   List.startSite(name);
@@ -40699,18 +40729,80 @@ function changeFromSite(name) {
   $('.black-highlight').css('background-image', 'linear-gradient(white, white)');
   toHLColor = '#000';
   fromHLColor = '#FFF';
-}
+} // OPEN INFO PAGES
 
-var sites = ['cocinas', 'mesadas', 'electrodomesticos', 'placard'];
-sites.forEach(function (site) {
-  $("#".concat(site, "-button")).click(function () {
-    changeToSite(site);
-  });
-  $("#".concat(site, "-back-button")).click(function () {
-    changeFromSite(site);
-  });
+
+$('#visitanos').click(function () {
+  bringInfoPage('visitus', ['-100vw', 0], [0, 0]);
 });
-},{"./anim.js":"js/anim.js","./list.js":"js/list.js"}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+$('#nosotros').click(function () {
+  bringInfoPage('aboutus', ['100vw', 0], [0, 0]);
+});
+$('#contactate').click(function () {
+  bringInfoPage('contact', [0, 0], ['-100vh', 0]);
+});
+
+function bringInfoPage(name, translateX, translateY) {
+  anime({
+    targets: "#".concat(name, "-page"),
+    easing: 'easeOutQuad',
+    duration: 800,
+    translateX: translateX,
+    translateY: translateY
+  });
+  $('#modal').css('display', 'block');
+  anime({
+    targets: '#modal',
+    easing: 'easeOutQuad',
+    duration: 800,
+    opacity: [0, 1]
+  });
+  $('#modal').off('click').click(function () {
+    anime({
+      targets: "#".concat(name, "-page"),
+      easing: 'easeOutQuad',
+      duration: 800,
+      translateX: [translateX[1], translateX[0]],
+      translateY: [translateY[1], translateY[0]]
+    });
+    anime({
+      targets: '#modal',
+      easing: 'easeOutQuad',
+      duration: 800,
+      opacity: [1, 0],
+      complete: function complete() {
+        $('#modal').css('display', 'none');
+      }
+    });
+  });
+} // MAP
+
+
+var coord = [-34.585030, -58.443679];
+var map = L.map('map').setView(coord, 14);
+L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+  attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+  maxZoom: 18,
+  id: 'mapbox/streets-v11',
+  tileSize: 512,
+  zoomOffset: -1,
+  accessToken: 'pk.eyJ1IjoiYnJpYW5rbzE0IiwiYSI6ImNrZ3Zia3pkYzAxNXAyeXBnZTNyaTF4cWMifQ._ISqhPDmu3KiKDL8FqK0iA'
+}).addTo(map);
+var icon = L.icon({
+  iconUrl: _.default['map-marker'],
+  iconSize: [38, 40],
+  iconAnchor: [22, 41],
+  popupAnchor: [-3, -49],
+  // shadowUrl: 'my-icon-shadow.png',
+  shadowSize: [68, 95],
+  shadowAnchor: [22, 94]
+});
+var marker = L.marker(coord, {
+  icon: icon
+}).addTo(map);
+var popup = L.popup().setLatLng(coord).setContent("<b>Ateret Cocinas</b><br>Av. Córdoba 5923");
+marker.bindPopup(popup).openPopup();
+},{"./anim.js":"js/anim.js","./list.js":"js/list.js","../images/*.png":"images/*.png"}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -40738,7 +40830,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58701" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54699" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

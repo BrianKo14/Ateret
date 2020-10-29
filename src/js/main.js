@@ -1,5 +1,6 @@
 import * as Anim from './anim.js';
 import * as List from './list.js';
+import images from '../images/*.png'
 
 if (isMobile) {
 
@@ -24,7 +25,9 @@ function changeOrientation() {
 
 Anim.introAnimation();
 
-// Button animation
+
+
+// BLOCK BUTTONS
 if (!isMobile) {
     $('.nav-button div').hover(
     e => {
@@ -94,6 +97,19 @@ if (!isMobile) {
     );
 }
 
+
+
+// CHANGE SECTION
+const sites = ['cocinas', 'mesadas', 'electrodomesticos', 'placard']
+sites.forEach(site => {
+    $(`#${site}-button`).click(() => {
+        changeToSite(site);
+    });
+
+    $(`#${site}-back-button`).click(() => {
+        changeFromSite(site);
+    });
+});
 function changeToSite(name) {
     List.startSite(name);
 
@@ -165,13 +181,80 @@ function changeFromSite(name) {
     fromHLColor = '#FFF';
 }
 
-const sites = ['cocinas', 'mesadas', 'electrodomesticos', 'placard']
-sites.forEach(site => {
-    $(`#${site}-button`).click(() => {
-        changeToSite(site);
-    });
 
-    $(`#${site}-back-button`).click(() => {
-        changeFromSite(site);
-    });
+// OPEN INFO PAGES
+$('#visitanos').click(() => {
+    bringInfoPage('visitus', ['-100vw', 0], [0, 0]);
 });
+$('#nosotros').click(() => {
+    bringInfoPage('aboutus', ['100vw', 0], [0, 0]);
+});
+$('#contactate').click(() => {
+    bringInfoPage('contact', [0, 0], ['-100vh', 0]);
+});
+function bringInfoPage(name, translateX, translateY) {
+    anime({
+        targets: `#${name}-page`,
+        easing: 'easeOutQuad',
+        duration: 800,
+        translateX: translateX,
+        translateY: translateY,
+    });
+    $('#modal').css('display', 'block');
+    anime({
+        targets: '#modal',
+        easing: 'easeOutQuad',
+        duration: 800,
+        opacity: [0, 1]
+    });
+    
+    $('#modal').off('click').click(() => {
+        anime({
+            targets: `#${name}-page`,
+            easing: 'easeOutQuad',
+            duration: 800,
+            translateX: [translateX[1], translateX[0]],
+            translateY: [translateY[1], translateY[0]],
+        });
+        anime({
+            targets: '#modal',
+            easing: 'easeOutQuad',
+            duration: 800,
+            opacity: [1, 0],
+            complete: () => {
+                $('#modal').css('display', 'none');
+            },
+        });
+    });
+}
+
+
+
+// MAP
+const coord = [-34.585030, -58.443679];
+var map = L.map('map').setView(coord, 14);
+
+L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: 'pk.eyJ1IjoiYnJpYW5rbzE0IiwiYSI6ImNrZ3Zia3pkYzAxNXAyeXBnZTNyaTF4cWMifQ._ISqhPDmu3KiKDL8FqK0iA'
+}).addTo(map);
+
+var icon = L.icon({
+    iconUrl: images['map-marker'],
+    iconSize: [38, 40],
+    iconAnchor: [22, 41],
+    popupAnchor: [-3, -49],
+    // shadowUrl: 'my-icon-shadow.png',
+    shadowSize: [68, 95],
+    shadowAnchor: [22, 94]
+});
+
+var marker = L.marker(coord, {icon: icon}).addTo(map);
+var popup = L.popup()
+    .setLatLng(coord)
+    .setContent("<b>Ateret Cocinas</b><br>Av. Córdoba 5923");
+marker.bindPopup(popup).openPopup();
