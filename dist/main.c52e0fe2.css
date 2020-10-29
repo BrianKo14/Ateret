@@ -243,7 +243,8 @@ html, body {
     padding: 0;
     z-index: 2;
     display: none;
-
+}
+.bg .bg-container {
     opacity: 0;
 }
 
@@ -261,6 +262,9 @@ html, body {
         border-width: 3px;
 
         padding: 12px;
+    }
+    .nav-button div:hover{
+        color: white;
     }
 
     #contactate {

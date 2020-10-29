@@ -21,14 +21,6 @@
                 // $('.bw').css('opacity', 1);
             }
         });
-
-        anime({
-            targets: '.fa',
-            opacity: 1,
-            easing: 'easeInOutSine',
-            delay: anime.stagger(400),
-            duration: 1000,
-        });
     }, 2500);
 
     setTimeout(() => {
@@ -45,6 +37,14 @@
             targets: ['#contactate', '#nosotros', '#visitanos'],
             opacity: 1,
             easing: 'easeInOutSine',
+            duration: 1000,
+        });
+
+        anime({
+            targets: '.fa',
+            opacity: 1,
+            easing: 'easeInOutSine',
+            delay: anime.stagger(400),
             duration: 1000,
         });
     }, 4000);

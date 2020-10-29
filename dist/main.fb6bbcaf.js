@@ -149,13 +149,6 @@ function introAnimation() {
         // $('.bw').css('opacity', 1);
       }
     });
-    anime({
-      targets: '.fa',
-      opacity: 1,
-      easing: 'easeInOutSine',
-      delay: anime.stagger(400),
-      duration: 1000
-    });
   }, 2500);
   setTimeout(function () {
     $('#svg-margin').css('opacity', 1);
@@ -171,6 +164,13 @@ function introAnimation() {
       targets: ['#contactate', '#nosotros', '#visitanos'],
       opacity: 1,
       easing: 'easeInOutSine',
+      duration: 1000
+    });
+    anime({
+      targets: '.fa',
+      opacity: 1,
+      easing: 'easeInOutSine',
+      delay: anime.stagger(400),
       duration: 1000
     });
   }, 4000);
@@ -40389,8 +40389,8 @@ var length, height, width;
 function startSite(name) {
   // Set jQuery name for this site
   exports.currentSite = currentSite = name;
-  dlNames = "#".concat(currentSite, "-bg .dynamic-list .dl-row");
-  dsNames = "#".concat(currentSite, "-bg .dynamic-slideshow .ds-row"); // Get number of rows
+  dlNames = "#".concat(currentSite, "-bg .bg-container .dynamic-list .dl-row");
+  dsNames = "#".concat(currentSite, "-bg .bg-container .dynamic-slideshow .ds-row"); // Get number of rows
 
   length = $(dlNames).length;
   $(dlNames).each(function () {
@@ -40400,9 +40400,9 @@ function startSite(name) {
 
     if (isMobile) {
       $(this).click(function () {
-        $("#".concat(currentSite, "-bg .dynamic-slideshow")).css('display', 'block');
-        $("#".concat(currentSite, "-bg .dynamic-list")).css('display', 'none');
-        $("#".concat(currentSite, "-bg .goback")).css('display', 'block');
+        $("#".concat(currentSite, "-bg .bg-container .dynamic-slideshow")).css('display', 'block');
+        $("#".concat(currentSite, "-bg .bg-container .dynamic-list")).css('display', 'none');
+        $("#".concat(currentSite, "-bg .bg-container .goback")).css('display', 'block');
       });
     } // 3D
     // const size = [200, 200];
@@ -40410,10 +40410,10 @@ function startSite(name) {
 
   }); // Go back button
 
-  $("#".concat(currentSite, "-bg .goback")).click(function () {
-    $("#".concat(currentSite, "-bg .dynamic-slideshow")).css('display', 'none');
-    $("#".concat(currentSite, "-bg .dynamic-list")).css('display', 'block');
-    $("#".concat(currentSite, "-bg .goback")).css('display', 'none');
+  $("#".concat(currentSite, "-bg .bg-container .goback")).click(function () {
+    $("#".concat(currentSite, "-bg .bg-container .dynamic-slideshow")).css('display', 'none');
+    $("#".concat(currentSite, "-bg .bg-container .dynamic-list")).css('display', 'block');
+    $("#".concat(currentSite, "-bg .bg-container .goback")).css('display', 'none');
   });
   pos = selected = 0;
   slide();
@@ -40481,7 +40481,7 @@ if (!isMobile) {
     yPosBuffer = e.touches[0].screenY;
   });
   $(document).on('touchmove', function (e) {
-    var delta = (e.touches[0].screenY - yPosBuffer) * -0.008;
+    var delta = (e.touches[0].screenY - yPosBuffer) * -0.006;
 
     if (pos + delta >= 0 && pos + delta <= length - 1) {
       pos += delta;
@@ -40578,61 +40578,66 @@ function changeOrientation() {
 
 Anim.introAnimation(); // Button animation
 
-$('.nav-button div').hover(function (e) {
-  // White highlight
-  var svg = e.target.parentElement.querySelector('.svg-button');
-  anime({
-    targets: svg,
-    width: '100%',
-    easing: 'easeInOutCirc',
-    duration: 200,
-    complete: function complete() {
-      svg.setAttribute('style', 'left: 0; width: 100%;');
-    }
+if (!isMobile) {
+  $('.nav-button div').hover(function (e) {
+    // White highlight
+    var svg = e.target.parentElement.querySelector('.svg-button');
+    anime({
+      targets: svg,
+      width: '100%',
+      easing: 'easeInOutCirc',
+      duration: 200,
+      complete: function complete() {
+        svg.setAttribute('style', 'left: 0; width: 100%;');
+      }
+    });
+    Anim.darkenBlocks(e.target.parentElement.parentElement);
+  }, function (e) {
+    // White highlight
+    var svg = e.target.parentElement.querySelector('.svg-button');
+    anime({
+      targets: svg,
+      width: '0%',
+      easing: 'easeInOutCirc',
+      duration: 200,
+      complete: function complete() {
+        svg.setAttribute('style', 'right: 0; width: 0%;');
+      }
+    });
+    Anim.lightenBlocks(e.target.parentElement.parentElement);
   });
-  Anim.darkenBlocks(e.target.parentElement.parentElement);
-}, function (e) {
-  // White highlight
-  var svg = e.target.parentElement.querySelector('.svg-button');
-  anime({
-    targets: svg,
-    width: '0%',
-    easing: 'easeInOutCirc',
-    duration: 200,
-    complete: function complete() {
-      svg.setAttribute('style', 'right: 0; width: 0%;');
-    }
-  });
-  Anim.lightenBlocks(e.target.parentElement.parentElement);
-});
+}
+
 var toHLColor = '#000';
 var fromHLColor = '#FFF'; // Highlight animation
 
-$('.black-highlight').hover(function (e) {
-  anime({
-    targets: e.target,
-    easing: 'easeInSine',
-    duration: 200,
-    color: toHLColor,
-    borderColor: toHLColor,
-    backgroundSize: ['0% 1.4rem', '100% 1.4rem'],
-    complete: function complete() {
-      e.target.style.backgroundPosition = 'left bottom';
-    }
+if (!isMobile) {
+  $('.black-highlight').hover(function (e) {
+    anime({
+      targets: e.target,
+      easing: 'easeInSine',
+      duration: 200,
+      color: toHLColor,
+      borderColor: toHLColor,
+      backgroundSize: ['0% 1.4rem', '100% 1.4rem'],
+      complete: function complete() {
+        e.target.style.backgroundPosition = 'left bottom';
+      }
+    });
+  }, function (e) {
+    anime({
+      targets: e.target,
+      easing: 'easeInSine',
+      duration: 200,
+      color: fromHLColor,
+      borderColor: fromHLColor,
+      backgroundSize: ['100% 1.4rem', '0% 1.4rem'],
+      complete: function complete() {
+        e.target.style.backgroundPosition = 'right bottom';
+      }
+    });
   });
-}, function (e) {
-  anime({
-    targets: e.target,
-    easing: 'easeInSine',
-    duration: 200,
-    color: fromHLColor,
-    borderColor: fromHLColor,
-    backgroundSize: ['100% 1.4rem', '0% 1.4rem'],
-    complete: function complete() {
-      e.target.style.backgroundPosition = 'right bottom';
-    }
-  });
-});
+}
 
 function changeToSite(name) {
   List.startSite(name);
@@ -40640,10 +40645,17 @@ function changeToSite(name) {
   anime({
     targets: "#".concat(name, "-bg"),
     easing: 'easeInOutSine',
-    opacity: [0, 1],
     backgroundColor: 'rgba(255, 255, 255, 0.9)',
     duration: 1000
   });
+  setTimeout(function () {
+    anime({
+      targets: "#".concat(name, "-bg .bg-container"),
+      easing: 'easeInOutSine',
+      opacity: [0, 1],
+      duration: 500
+    });
+  }, 1000);
   anime({
     targets: ['#contactate', '#visitanos', '#nosotros', '#svg-margin rect', '#social a'],
     color: ['#FFF', '#000'],
@@ -40659,16 +40671,23 @@ function changeToSite(name) {
 
 function changeFromSite(name) {
   anime({
-    targets: "#".concat(name, "-bg"),
+    targets: "#".concat(name, "-bg .bg-container"),
     easing: 'easeInOutSine',
     opacity: [1, 0],
-    backgroundColor: 'rgba(255, 255, 255, 0)',
-    duration: 1000,
-    complete: function complete() {
-      $("#".concat(name, "-bg")).css('display', 'none');
-      List.endSite();
-    }
+    duration: 500
   });
+  setTimeout(function () {
+    anime({
+      targets: "#".concat(name, "-bg"),
+      easing: 'easeInOutSine',
+      backgroundColor: 'rgba(255, 255, 255, 0)',
+      duration: 1000,
+      complete: function complete() {
+        $("#".concat(name, "-bg")).css('display', 'none');
+        List.endSite();
+      }
+    });
+  }, 500);
   anime({
     targets: ['#contactate', '#visitanos', '#nosotros', '#svg-margin rect', '#social a'],
     color: ['#000', '#FFF'],
@@ -40719,7 +40738,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52131" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58701" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

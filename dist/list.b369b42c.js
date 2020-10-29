@@ -40245,8 +40245,8 @@ var length, height, width;
 function startSite(name) {
   // Set jQuery name for this site
   exports.currentSite = currentSite = name;
-  dlNames = "#".concat(currentSite, "-bg .dynamic-list .dl-row");
-  dsNames = "#".concat(currentSite, "-bg .dynamic-slideshow .ds-row"); // Get number of rows
+  dlNames = "#".concat(currentSite, "-bg .bg-container .dynamic-list .dl-row");
+  dsNames = "#".concat(currentSite, "-bg .bg-container .dynamic-slideshow .ds-row"); // Get number of rows
 
   length = $(dlNames).length;
   $(dlNames).each(function () {
@@ -40256,9 +40256,9 @@ function startSite(name) {
 
     if (isMobile) {
       $(this).click(function () {
-        $("#".concat(currentSite, "-bg .dynamic-slideshow")).css('display', 'block');
-        $("#".concat(currentSite, "-bg .dynamic-list")).css('display', 'none');
-        $("#".concat(currentSite, "-bg .goback")).css('display', 'block');
+        $("#".concat(currentSite, "-bg .bg-container .dynamic-slideshow")).css('display', 'block');
+        $("#".concat(currentSite, "-bg .bg-container .dynamic-list")).css('display', 'none');
+        $("#".concat(currentSite, "-bg .bg-container .goback")).css('display', 'block');
       });
     } // 3D
     // const size = [200, 200];
@@ -40266,10 +40266,10 @@ function startSite(name) {
 
   }); // Go back button
 
-  $("#".concat(currentSite, "-bg .goback")).click(function () {
-    $("#".concat(currentSite, "-bg .dynamic-slideshow")).css('display', 'none');
-    $("#".concat(currentSite, "-bg .dynamic-list")).css('display', 'block');
-    $("#".concat(currentSite, "-bg .goback")).css('display', 'none');
+  $("#".concat(currentSite, "-bg .bg-container .goback")).click(function () {
+    $("#".concat(currentSite, "-bg .bg-container .dynamic-slideshow")).css('display', 'none');
+    $("#".concat(currentSite, "-bg .bg-container .dynamic-list")).css('display', 'block');
+    $("#".concat(currentSite, "-bg .bg-container .goback")).css('display', 'none');
   });
   pos = selected = 0;
   slide();
@@ -40337,7 +40337,7 @@ if (!isMobile) {
     yPosBuffer = e.touches[0].screenY;
   });
   $(document).on('touchmove', function (e) {
-    var delta = (e.touches[0].screenY - yPosBuffer) * -0.008;
+    var delta = (e.touches[0].screenY - yPosBuffer) * -0.006;
 
     if (pos + delta >= 0 && pos + delta <= length - 1) {
       pos += delta;
@@ -40426,7 +40426,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52131" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58701" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

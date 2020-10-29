@@ -14,8 +14,8 @@ var length, height, width;
 export function startSite(name) {
     // Set jQuery name for this site
     currentSite = name;
-    dlNames = `#${currentSite}-bg .dynamic-list .dl-row`;
-    dsNames = `#${currentSite}-bg .dynamic-slideshow .ds-row`;
+    dlNames = `#${currentSite}-bg .bg-container .dynamic-list .dl-row`;
+    dsNames = `#${currentSite}-bg .bg-container .dynamic-slideshow .ds-row`;
 
     // Get number of rows
     length = $(dlNames).length;
@@ -28,9 +28,9 @@ export function startSite(name) {
         // Attach mobile click event listener
         if (isMobile) {
             $(this).click(() => {
-                $(`#${currentSite}-bg .dynamic-slideshow`).css('display', 'block');
-                $(`#${currentSite}-bg .dynamic-list`).css('display', 'none');
-                $(`#${currentSite}-bg .goback`).css('display', 'block');
+                $(`#${currentSite}-bg .bg-container .dynamic-slideshow`).css('display', 'block');
+                $(`#${currentSite}-bg .bg-container .dynamic-list`).css('display', 'none');
+                $(`#${currentSite}-bg .bg-container .goback`).css('display', 'block');
             });
         }
 
@@ -41,10 +41,10 @@ export function startSite(name) {
     });  
 
     // Go back button
-    $(`#${currentSite}-bg .goback`).click(() => {
-        $(`#${currentSite}-bg .dynamic-slideshow`).css('display', 'none');
-        $(`#${currentSite}-bg .dynamic-list`).css('display', 'block');
-        $(`#${currentSite}-bg .goback`).css('display', 'none');
+    $(`#${currentSite}-bg .bg-container .goback`).click(() => {
+        $(`#${currentSite}-bg .bg-container .dynamic-slideshow`).css('display', 'none');
+        $(`#${currentSite}-bg .bg-container .dynamic-list`).css('display', 'block');
+        $(`#${currentSite}-bg .bg-container .goback`).css('display', 'none');
     });
 
     pos = selected = 0;
@@ -122,7 +122,7 @@ else {
     });
 
     $(document).on('touchmove', function(e) { 
-        const delta = (e.touches[0].screenY - yPosBuffer) * -0.008;
+        const delta = (e.touches[0].screenY - yPosBuffer) * -0.006;
 
         if (pos + delta >= 0 && pos + delta <= length - 1) {
             pos += delta;
