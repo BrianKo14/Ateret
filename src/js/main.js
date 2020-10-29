@@ -1,9 +1,7 @@
 import * as Anim from './anim.js';
 import * as List from './list.js';
 
-var isMobile = false;
-if (/Android|webOS|iPhone|iPad|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-    console.log('[Mobile mode]');
+if (isMobile) {
 
     // Prevent dragging
     document.addEventListener("touchmove", (e) => { e.preventDefault(); }, {passive: false});
@@ -127,6 +125,7 @@ function changeFromSite(name) {
         duration: 1000,
         complete: () => {
             $(`#${name}-bg`).css('display', 'none');
+            List.endSite();
         },
     });
 
@@ -149,7 +148,6 @@ const sites = ['cocinas', 'mesadas', 'electrodomesticos', 'placard']
 sites.forEach(site => {
     $(`#${site}-button`).click(() => {
         changeToSite(site);
-        console.log('hey');
     });
 
     $(`#${site}-back-button`).click(() => {

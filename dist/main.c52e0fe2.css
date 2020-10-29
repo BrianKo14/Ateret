@@ -67,7 +67,7 @@ html, body {
     /* max-width: 130%; */
     max-height: 130%;
 
-    filter: brightness(80%);
+    filter: brightness(70%);
 }
 
 #NW { top:0;   left:0;}
@@ -210,7 +210,7 @@ html, body {
 }
 
 #contactate {
-    left: calc(50vw - 6ch);
+    left: calc(50vw - 5ch);
     top: 20px;
 
     font-size: 1rem;
@@ -245,20 +245,6 @@ html, body {
     display: none;
 
     opacity: 0;
-}
-
-.back-button {
-    font-size: 30px;
-    cursor: pointer;
-
-    margin: 20px;
-    position: fixed;
-
-    text-decoration: none;
-    color: black;
-
-    left: 30px;
-    top: 30px;
 }
 
 /* MOBILE DEVICES */

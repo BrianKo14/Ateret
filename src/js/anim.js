@@ -124,7 +124,7 @@ export function darkenBlocks(exceptionBlock) {
         targets: exceptionBlock.getElementsByTagName('video')[0],
         easing: 'easeInOutCirc',
         duration: 300,
-        filter: ['brightness(80%)', 'brightness(100%)']
+        filter: ['brightness(70%)', 'brightness(100%)']
     });
 }
 export function lightenBlocks(exceptionBlock) {
@@ -139,6 +139,6 @@ export function lightenBlocks(exceptionBlock) {
         targets: exceptionBlock.getElementsByTagName('video')[0],
         easing: 'easeInOutCirc',
         duration: 300,
-        filter: ['brightness(100%)', 'brightness(80%)']
+        filter: ['brightness(100%)', 'brightness(70%)']
     });
 }

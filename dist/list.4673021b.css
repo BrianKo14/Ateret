@@ -15,11 +15,44 @@
     height: 30%;
 
     left: calc(50% - 40%);
-    /* top: calc(50% - 15%); */
 
-    background-color: red;
-    border: 5px solid black;
+    /* background-color: rgba(0, 0, 0, 0.242); */
+    /* border: 5px solid black; */
 }
+
+.dl-pic {
+    position: absolute;
+    width: 32%;
+    height: 80%;
+
+    top: 10%;
+
+    /* background-color: black; */
+    background-image: url("/HeaderStorePic.197203ed.png");
+    background-size: 170% 100%;
+}
+.dl-pic-right { right: 5%; }
+.dl-pic-left { left: 5%; }
+
+canvas:focus { outline:0; }
+
+.dl-title {
+    position: absolute;
+
+    /* font-family: 'Poppins', sans-serif; */
+    font-family: 'Roboto', sans-serif;
+    font-weight: 1200;
+    letter-spacing: 0.075em;
+    font-size: 1rem;
+    text-transform: uppercase;
+
+    top: 50%;
+    transform: translateY(-50%);
+}
+.dl-title-right { right: 62%; }
+.dl-title-left { left: 52%; }
+
+
 
 /* Slideshow */
 .dynamic-slideshow {
@@ -29,6 +62,8 @@
 
     left: 5%;
     top: 25%;
+
+    /* background-color: red; */
 }
 
 .ds-row {
@@ -37,8 +72,6 @@
     height: 100%;
 
     display: none;
-
-    background-color: red;
 }
 
 
@@ -58,6 +91,91 @@
     font-family: 'Staatliches', cursive;
     color: black;
     /* text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; */
+}
+
+#cocinas-title { font-size: 8vw; }
+#mesadas-title { font-size: 8vw; }
+#electrodomesticos-title { font-size: 5vw; }
+#placard-title { font-size: 8vw; }
+
+.back-button {
+    cursor: pointer;
+    position: absolute;
+    height: 11%;
+
+    left: 50px;
+    top: 40px;
+
+    z-index: 30;
+}
+.stB{fill:none;stroke:#000000;stroke-width:50;stroke-miterlimit:10;}
+
+.goback {
+    position: absolute;
+    display: none;
+
+    left: 50%;
+    top: 23%;
+
+    transform: translateX(-50%);
+
+    font-family: 'Roboto', sans-serif;
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: 0.075em;
+    height: 3rem;
+
+    z-index: 30;
+}
+
+/* MOBILE DEVICES */
+@media only screen and (max-device-width: 1000px) and (orientation: portrait) {  
+
+    .dynamic-list {
+        width: 90%;
+        height: 90%;
+    
+        left: 5%;
+        top: 5%;
+    }
+
+    .dl-row {
+        width: 80%;
+        height: 20%;
+    
+        left: calc(50% - 40%);
+    }
+
+    .dynamic-slideshow {
+        display: none;
+
+        width: 85%;
+        height: 65%;
+
+        left: 7.5%;
+        top: 30%;
+
+    }  
+
+    .section-title {
+        width: 50%;
+        height: 12%;
+    
+        left: 25%;
+        top: 10%;
+    }
+
+    #cocinas-title { font-size: 18vw; }
+    #mesadas-title { font-size: 18vw; }
+    #electrodomesticos-title { font-size: 10vw; }
+    #placard-title { font-size: 18vw; }
+
+    .back-button {
+        height: 11%;
+
+        left: 7%;
+        top: 2%;
+    }
 }
 
 /*# sourceMappingURL=/list.4673021b.css.map */
