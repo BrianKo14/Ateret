@@ -148,17 +148,19 @@
             </video>
             <div id="map"></div>
             <div id="visitus-info">
-                <span id="visitus-info-title">SHOWROOM</span>
+                <span id="visitus-info-title" class="wtob">SHOWROOM</span>
                 <div class="visitus-column-left">
-                    <span class="visitus-info-text">DIRECCION</span>
-                    <span class="visitus-info-text">TELEFONO</span>
-                    <span class="visitus-info-text">HORARIOS</span>
+                    <span class="visitus-info-text wtob">DIRECCION</span>
+                    <span class="visitus-info-text wtob">TELEFONO</span>
+                    <span class="visitus-info-text wtob">HORARIOS</span>
                 </div>
                 <div class="visitus-column-right">
-                    <span class="visitus-info-text">Av. Córdoba 5923, CABA</span>
-                    <span class="visitus-info-text">+54 11 4773-6841</span>
-                    <span class="visitus-info-text"><i>Lunes a viernes:</i> 10:00 a 13:00 / 15:00 a 19:00hs.</span>
-                    <span class="visitus-info-text"><i>Sábado:</i> 10:00 a 14:00hs.</span>
+                    <span class="visitus-info-text wtob">Av. Córdoba 5923, CABA</span>
+                    <span class="visitus-info-text wtob">+54 11 4773-6841</span>
+                    <!-- <span class="visitus-info-text"><i>Lunes a viernes:</i> 10:00 a 13:00 / 15:00 a 19:00hs.</span>
+                    <span class="visitus-info-text"><i>Sábado:</i> 10:00 a 14:00hs.</span> -->
+                    <span class="visitus-info-text wtob">Lunes a viernes: 10:00 a 13:00 / 15:00 a 19:00hs.</span>
+                    <span class="visitus-info-text wtob">Sábado: 10:00 a 14:00hs.</span>
                 </div>
             </div>
             <div id="visitus-infopic">
@@ -177,8 +179,24 @@
     <!-- Contact -->
     <div>
         <div id="contact-page" class="pages">
-            
+            <div id="form">
+                <span id="contact-title" class="wtob">CONTACTO</span>
+                <span class="form-question wtob" id="qname">Nombre</span>
+                <input type="text" id="aname" name="aname" class="form-answer btow"><br><br>
+                <span class="form-question wtob" id="qmail">Correo electrónico</span>
+                <input type="text" id="amail" name="amail" class="form-answer btow"><br><br>
+                <span class="form-question wtob" id="qmsg">Mensaje</span>
+                <textarea id="amsg" name="amsg" class="form-answer btow"></textarea>
+                <span id="send" class="no-select square-but">ENVIAR</span>
+            </div>
+            <div id="contact-info">
+                <video playsinline autoplay loop muted defaultMuted>
+                    <source src="images/cocinas3.mp4" type="video/mp4"/>
+                    <p class="warning">Your browser does not support HTML5 video.</p>
+                </video>
+            </div>
         </div>
+        
     </div>
     
 

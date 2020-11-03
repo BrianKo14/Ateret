@@ -240,7 +240,7 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 }).addTo(map);
 
 var icon = L.icon({
-    iconUrl: '../images/map-marker.png',
+    iconUrl: 'images/map-marker.png',
     iconSize: [38, 40],
     iconAnchor: [22, 41],
     popupAnchor: [-3, -49],

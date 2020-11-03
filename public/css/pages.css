@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
 
+/* ALL PAGES */
 .pages {
     position: absolute;
     z-index: 40;
@@ -16,6 +17,138 @@
     transform: translateX(-100vw);
 }
 
+/* Highlight colors */
+.btow::-moz-selection {
+    color: black;
+    background: rgba(255,255,255,0.99);;
+  }
+.btow::selection {
+    color: black;
+    background: rgba(255,255,255,0.99);;
+}
+.wtob::-moz-selection {
+    color: white;
+    background: rgba(0, 0, 0, 0.99);;
+  }
+.wtob::selection {
+    color: white;
+    background: rgba(0, 0, 0, 0.99);;
+}
+
+/* CONTACT */
+#contact-title {
+    position: absolute;
+    
+    left: 28.5%;
+    top: 10%;
+    transform: translateX(-50%);
+
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
+    font-weight: normal;
+    letter-spacing: 0.075em;
+}
+
+.form-question {
+    position: absolute;
+    left: 8%;
+
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.075em;
+    font-weight: 410;
+}
+
+.form-answer {
+    position: absolute;
+    width: 42%;
+    left: 7%;
+
+    padding-left: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.075em;
+    font-weight: normal;
+    
+
+    border: none;
+    background-color: black;
+    color: white;
+}
+.form-answer:focus { outline:0; }
+
+#qname { top: 19%; }
+#qmail { top: 33%; }
+#qmsg { top: 47%; }
+
+#aname { top: 24%; height: 5%; }
+#amail { top: 38%; height: 5%; }
+#amsg {
+    top: 52%;
+    height: 30%;
+    padding-top: 10px;
+    padding-right: 10px;
+    width: calc(42% - 8px);
+
+    word-break: break-word;
+    resize: none;
+}
+
+#send {
+    position: absolute;
+    left: calc(7% + 42%/2); transform: translateX(-50%);
+    top: 89%;
+
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: 0.075em;
+
+    background-color: white;
+    color: black;
+    padding-right: 5px;
+    padding-left: 5px;
+    cursor: pointer;
+}
+#send:hover {
+    background-color: black;
+    color: white;
+}
+
+#contact-info {
+    position: absolute;
+    right: -34%;
+    top: 0;
+
+    width: 45%;
+    height: 100%;
+    
+    background-color: black;
+    /* clip-path: polygon(110% 0%, 110% 110%, 10% 110%,
+                    10% 57%, 0% 48%, 10% 40%,
+                    10% 0%); */
+}
+#contact-info video {
+    position: absolute;
+    top: 0%;
+    left: -69%;
+    height: 80vh;
+    width: 80vw;
+}
+.contact-info-text {
+    position: absolute;
+    left: 15%;
+    top: 25%;
+
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.075em;
+    font-weight: 410;
+    color: white;
+}
+
+
+/* VISIT US */
 .pages video {
     position: absolute;
     width: 55%;
