@@ -103,8 +103,6 @@ canvas:focus { outline:0; }
 
     left: 5%;
     top: 25%;
-
-    opacity: 0;
 }
 
 .ds-row {
@@ -113,6 +111,26 @@ canvas:focus { outline:0; }
     height: 100%;
 
     display: none;
+}
+
+.ds-row-bigpic {
+    background-color: black;
+    width: 100%;
+    height: 72%;
+    margin: 10px;
+}
+
+.ds-row-description {
+    position: absolute;
+    margin-top: 2%;
+    margin-left: 4%;
+    margin-right: 4%;
+
+    font-family: 'Merriweather', serif;
+    /* letter-spacing: 0.075em; */
+    font-size: 1rem;
+    /* text-transform: uppercase; */
+    text-align: center;
 }
 
 
