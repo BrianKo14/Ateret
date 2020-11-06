@@ -19,6 +19,24 @@ function changeOrientation() {
 }
 
 
+// $(window).resize(() => {
+//     $('.dl-pic').find('img').each(function(){
+//         if ($(this).height < $(this).parent().height) {
+//             $(this).css('height', '100%');
+//             $(this).css('width', 'auto');
+//         } else {
+//             $(this).css('width', '100%');
+//             $(this).css('height', 'auto');
+//         }
+
+//         // const resizeFixed = (this.width > this.height) ? 'width' : 'height';
+//         // const resizeAuto = (this.width <= this.height) ? 'height' : 'width';
+//         // $(this).css(resizeFixed, '110%');
+//         // $(this).css(resizeAuto, 'auto');
+//     })
+// })
+
+
 introAnimation();
 
 

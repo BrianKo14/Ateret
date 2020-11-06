@@ -28,21 +28,46 @@
     height: 80%;
 
     top: 10%;
+    overflow: hidden;
 
     background-color: black;
 }
 .dl-pic-right { right: 5%; }
 .dl-pic-left { left: 5%; }
 
+.dl-pic img {
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    width: 110%;
+}
+
 canvas:focus { outline:0; }
+
+.brand-logo {
+    width: 150px;
+    position: relative;
+}
+.logo-title {
+    width: 50%;
+}
+#neolith-logo {
+    top: 4px;
+    margin-left: 1%;
+}
+#silestone-logo {
+    margin-left: 5%;
+}
+
 
 .dl-title {
     position: absolute;
 
-    font-family: 'Merriweather', serif;
+    /* font-family: 'Merriweather', serif; */
+    font-family: 'Staatliches', cursive;
     font-weight: bold;
     /* font-style: italic; */
-    /* letter-spacing: 0.075em; */
+    letter-spacing: 0.03em;
     font-size: 1.8rem;
     /* text-transform: uppercase; */
 
