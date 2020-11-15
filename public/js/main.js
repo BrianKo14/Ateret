@@ -1,3 +1,5 @@
+
+// MOBILE
 if (isMobile) {
 
     // Prevent dragging
@@ -18,7 +20,7 @@ function changeOrientation() {
     }
 }
 
-
+// ISSUE WITH IMAGE RATIO
 // $(window).resize(() => {
 //     $('.dl-pic').find('img').each(function(){
 //         if ($(this).height < $(this).parent().height) {
@@ -38,7 +40,6 @@ function changeOrientation() {
 
 
 introAnimation();
-
 
 
 // BLOCK BUTTONS

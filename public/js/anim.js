@@ -1,59 +1,72 @@
  
  // Intro
 function introAnimation() {
-    setTimeout( () => {
-        anime({
-            targets: ['#NE', '#SW'],
-            easing: 'easeInOutSine',
-            opacity: [0, 1],
-            duration: 2000
-        })
-    }, 3000);
 
-    setTimeout(() => {
-        anime({
-            targets: ['#NW', '#SE'],
-            easing: 'easeInOutSine',
-            opacity: [0, 1],
-            duration: 2000,
-            complete: () => {
-                // $('body').attr('style', 'background: black url("images/marble-bg1.jpg") no-repeat fixed center;');
-                // $('.bw').css('opacity', 1);
-            }
-        });
-    }, 2500);
-
-    setTimeout(() => {
-        $('#svg-margin').css('opacity', 1);
-        anime({
-            targets: '#svg-margin rect',
-            easing: 'easeInOutSine',
-            // strokeDashoffset: [anime.setDashoffset, 0],
-            opacity: [0, 1],
-            duration: 2000 // Default: 3500
-        });
-
-        anime({
-            targets: ['#contactate', '#nosotros', '#visitanos'],
-            opacity: 1,
-            easing: 'easeInOutSine',
-            duration: 1000,
-        });
-
-        anime({
-            targets: '.fa',
-            opacity: 1,
-            easing: 'easeInOutSine',
-            delay: anime.stagger(400),
-            duration: 1000,
-        });
-    }, 4000);
-
+    // Draw title
     setTimeout(() => {
         $('#title').attr('style', 'display: block;');
-
         drawLogo();
-    }, 500);
+    }, 100);
+
+    var videoLoader = new PxLoader();
+    videoLoader.addVideo('images/cocinas3.mp4');
+    videoLoader.addVideo('images/electrodomesticos.mp4');
+    videoLoader.addVideo('images/mesadas3.mp4');
+    videoLoader.addVideo('images/placard2.mp4');
+
+    videoLoader.addCompletionListener(() => {
+        console.log("Videos lodaded.");
+
+        setTimeout( () => {
+            anime({
+                targets: ['#NE', '#SW'],
+                easing: 'easeInOutSine',
+                opacity: [0, 1],
+                duration: 2000
+            })
+        }, 3000);
+    
+        setTimeout(() => {
+            anime({
+                targets: ['#NW', '#SE'],
+                easing: 'easeInOutSine',
+                opacity: [0, 1],
+                duration: 2000,
+                complete: () => {
+                    // $('body').attr('style', 'background: black url("images/marble-bg1.jpg") no-repeat fixed center;');
+                    // $('.bw').css('opacity', 1);
+                }
+            });
+        }, 2500);
+    
+        setTimeout(() => {
+            $('#svg-margin').css('opacity', 1);
+            anime({
+                targets: '#svg-margin rect',
+                easing: 'easeInOutSine',
+                // strokeDashoffset: [anime.setDashoffset, 0],
+                opacity: [0, 1],
+                duration: 2000 // Default: 3500
+            });
+    
+            anime({
+                targets: ['#contactate', '#nosotros', '#visitanos'],
+                opacity: 1,
+                easing: 'easeInOutSine',
+                duration: 1000,
+            });
+    
+            anime({
+                targets: '.fa',
+                opacity: 1,
+                easing: 'easeInOutSine',
+                delay: anime.stagger(400),
+                duration: 1000,
+            });
+        }, 4000);
+    });
+
+    loader.start();
 }
 
 function drawLogo() {
