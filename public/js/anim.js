@@ -6,16 +6,16 @@ function introAnimation() {
     setTimeout(() => {
         $('#title').attr('style', 'display: block;');
         drawLogo();
-    }, 100);
+    }, 500); //100
 
-    var videoLoader = new PxLoader();
-    videoLoader.addVideo('images/cocinas3.mp4');
-    videoLoader.addVideo('images/electrodomesticos.mp4');
-    videoLoader.addVideo('images/mesadas3.mp4');
-    videoLoader.addVideo('images/placard2.mp4');
+    // var videoLoader = new PxLoader();
+    // videoLoader.addVideo('images/cocinas3.mp4');
+    // videoLoader.addVideo('images/electrodomesticos.mp4');
+    // videoLoader.addVideo('images/mesadas3.mp4');
+    // videoLoader.addVideo('images/placard2.mp4');
 
-    videoLoader.addCompletionListener(() => {
-        console.log("Videos lodaded.");
+    // videoLoader.addCompletionListener(() => {
+    //     console.log("Videos lodaded.");
 
         setTimeout( () => {
             anime({
@@ -64,9 +64,9 @@ function introAnimation() {
                 duration: 1000,
             });
         }, 4000);
-    });
+    // });
 
-    loader.start();
+    // loader.start();
 }
 
 function drawLogo() {
