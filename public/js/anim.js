@@ -1,4 +1,5 @@
- 
+const videoFiles = ['images/cocinas3.mp4', 'images/electrodomesticos.mp4', 'images/mesadas3.mp4', 'images/placard2.mp4']
+
  // Intro
 function introAnimation() {
 
@@ -8,16 +9,16 @@ function introAnimation() {
         drawLogo();
     }, 500); //100
 
-    // var videoLoader = new PxLoader();
-    // videoLoader.addVideo('images/cocinas3.mp4');
-    // videoLoader.addVideo('images/electrodomesticos.mp4');
-    // videoLoader.addVideo('images/mesadas3.mp4');
-    // videoLoader.addVideo('images/placard2.mp4');
+    loadFiles(videoFiles, () => {
+        $('.nav-video').toArray().forEach((video, idx) => {
+            var source = document.createElement('source');
+            source.setAttribute('type', 'video/mp4');
+            source.setAttribute('src', videoFiles[idx]);
+            video.appendChild(source);
+        });
+        console.log("Videos lodaded.");
 
-    // videoLoader.addCompletionListener(() => {
-    //     console.log("Videos lodaded.");
-
-        setTimeout( () => {
+        setTimeout(() => {
             anime({
                 targets: ['#NE', '#SW'],
                 easing: 'easeInOutSine',
@@ -64,9 +65,8 @@ function introAnimation() {
                 duration: 1000,
             });
         }, 4000);
-    // });
+    });
 
-    // loader.start();
 }
 
 function drawLogo() {
