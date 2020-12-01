@@ -1,7 +1,3 @@
-
-// import { GLTFLoader } from 'https://unpkg.com/three@0.121.1/examples/jsm/loaders/GLTFLoader.js';
-// import { OrbitControls } from 'https://unpkg.com/three@0.121.1/examples/jsm/controls/OrbitControls.js';
-
 var currentSite = "home";
 
 var pos, selected;
@@ -32,10 +28,6 @@ function startSite(name) {
             });
         }
 
-        // 3D
-        // const size = [200, 200];
-        // load3D('../images/box.glb', $(".dl-pic", this).get(0), size, 3, 0);
-
     });  
 
     // Go back button
@@ -51,10 +43,7 @@ function startSite(name) {
 }
 
 function endSite() {
-    loadedElements.forEach(element => {
-        if (loadedElements != []) element.remove();
-        currentSite = "home";
-    });
+    currentSite = "home";
 }
 
 function slide() {
@@ -103,7 +92,7 @@ var yPosBuffer = 0;
 if (!isMobile) {
     // PC Scrolling
 
-    $(document).on('wheel', function(e) { // Not working on Firefox !!!
+    $(document).on('wheel', function(e) { // TODO: Not working on Firefox !!!
         const delta = e.originalEvent.wheelDelta * -0.008;
     
         if (pos + delta >= 0 && pos + delta <= length - 1) {
@@ -130,65 +119,3 @@ else {
         yPosBuffer = e.touches[0].screenY;
     });
 }    
-
-
-// 3D Renderer
-var loadedElements = [];
-function load3D(file, domElement, size, zPos, yPos) {
-
-	// SCENE
-	var scene = new THREE.Scene();
-	// scene.background = new THREE.Color('#ffffff');
-
-    var camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
-	camera.position.y = yPos;
-    camera.position.z = zPos;
-    camera.position.x = Math.sin(Math.random() * Math.PI * 2) * zPos * 0.8;
-
-	var renderer = new THREE.WebGLRenderer({antialias:true, alpha: true});
-    renderer.setSize(size[0], size[1]);
-    renderer.setClearColor( 0x000000, 0 );
-    renderer.setPixelRatio( window.devicePixelRatio * 0.3);
-
-    domElement.appendChild(renderer.domElement);
-    loadedElements.push(renderer.domElement);
-
-
-	// ORBIT
-	let controls = new OrbitControls(camera, domElement.firstChild);
-	controls.autoRotate = true;
-	controls.enablePan = false;
-	controls.enableZoom = false;
-	controls.minAzimuthAngle = 45;
-	controls.minAzimuthAngle = 45;
-
-
-	// LOADER
-	var loader = new GLTFLoader();
-	loader.load(file, function (gltf){
-		scene.add(gltf.scene);
-	}, undefined, function (error){
-		console.error(error);
-	});
-
-
-	// LIGHT
-	var hlight = new THREE.AmbientLight(0x404040, 10);
-	scene.add(hlight);
-
-	var directionalLight = new THREE.DirectionalLight(0xffffff, 2);
-	directionalLight.position.set(0,1,0);
-	directionalLight.castShadow = true;
-	scene.add(directionalLight);
-
-
-	// LOOP
-	function animate() {
-		requestAnimationFrame( animate );
-
-		controls.update();
-
-		renderer.render( scene, camera );
-	}
-	animate();
-}
