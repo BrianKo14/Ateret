@@ -1,81 +1,60 @@
-const videoFiles = ['images/cocinas3.mp4', 'images/mesadas3.mp4', 'images/electrodomesticos.mp4', 'images/placard2.mp4']
 
  // INTRO
 function introAnimation() {
-    var loadAnim;
 
     // Draw title
-    $('#title').attr('style', 'display: block;');
+    setTimeout(() => {
+        $('#title').attr('style', 'display: block;');
         drawLogo();
+    }, 500); //100
 
-        loadAnim = setInterval(() => {
-            anime({
-                targets: '#title',
-                easing: 'easeInOutSine',
-                opacity: [1, 0.5, 1],
-                duration: 2300
-            });
-    }, 2000);
+    setTimeout( () => {
+        anime({
+            targets: ['#NE', '#SW'],
+            easing: 'easeInOutSine',
+            opacity: [0, 1],
+            duration: 2000
+        })
+    }, 3000);
 
-    loadFiles(videoFiles, () => {
-        $('.nav-video').toArray().forEach((video, idx) => {
-            var source = document.createElement('source');
-            source.setAttribute('type', 'video/mp4');
-            source.setAttribute('src', videoFiles[idx]);
-            video.appendChild(source);
+    setTimeout(() => {
+        anime({
+            targets: ['#NW', '#SE'],
+            easing: 'easeInOutSine',
+            opacity: [0, 1],
+            duration: 2000,
+            complete: () => {
+                // $('body').attr('style', 'background: black url("images/marble-bg1.jpg") no-repeat fixed center;');
+                // $('.bw').css('opacity', 1);
+            }
+        });
+    }, 2500);
+
+    setTimeout(() => {
+        $('#svg-margin').css('opacity', 1);
+        anime({
+            targets: '#svg-margin rect',
+            easing: 'easeInOutSine',
+            // strokeDashoffset: [anime.setDashoffset, 0],
+            opacity: [0, 1],
+            duration: 2000 // Default: 3500
         });
 
-        console.log("Videos lodaded.");
-    
-        setTimeout(() => {
-            clearInterval(loadAnim);
-            anime({
-                targets: ['#NW', '#SE'],
-                easing: 'easeInOutSine',
-                opacity: [0, 1],
-                duration: 2000,
-                complete: () => {
-                    // $('body').attr('style', 'background: black url("images/marble-bg1.jpg") no-repeat fixed center;');
-                    // $('.bw').css('opacity', 1);
-                }
-            });
-        }, 2500);
+        anime({
+            targets: ['#contactate', '#nosotros', '#visitanos'],
+            opacity: 1,
+            easing: 'easeInOutSine',
+            duration: 1000,
+        });
 
-        setTimeout(() => {
-            anime({
-                targets: ['#NE', '#SW'],
-                easing: 'easeInOutSine',
-                opacity: [0, 1],
-                duration: 2000
-            })
-        }, 3000);
-    
-        setTimeout(() => {
-            $('#svg-margin').css('opacity', 1);
-            anime({
-                targets: '#svg-margin rect',
-                easing: 'easeInOutSine',
-                // strokeDashoffset: [anime.setDashoffset, 0],
-                opacity: [0, 1],
-                duration: 2000 // Default: 3500
-            });
-    
-            anime({
-                targets: ['#contactate', '#nosotros', '#visitanos'],
-                opacity: 1,
-                easing: 'easeInOutSine',
-                duration: 1000,
-            });
-    
-            anime({
-                targets: '.fa',
-                opacity: 1,
-                easing: 'easeInOutSine',
-                delay: anime.stagger(400),
-                duration: 1000,
-            });
-        }, 4000);
-    });
+        anime({
+            targets: '.fa',
+            opacity: 1,
+            easing: 'easeInOutSine',
+            delay: anime.stagger(400),
+            duration: 1000,
+        });
+    }, 4000);
 
 }
 
