@@ -250,7 +250,7 @@
 @media only screen and (max-device-width: 1000px) and (orientation: portrait) {
     .pages {
         width: 100vw;
-        height: 95vh; /* Fallback for browser that don't support custom properties*/
+        height: 95vh; /* Fallback for browser that don't support custom properties */
         height: calc(var(--vh, 1vh) * 100);
 
         left: 0vw;
@@ -323,7 +323,7 @@
 
     .form-answer {
         width: 80%;
-        font-size: 2rem;
+        font-size: 2.5rem;
         padding-left: 15px;
         transform: translateX(2.5vw);
     }

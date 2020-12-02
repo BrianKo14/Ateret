@@ -120,7 +120,7 @@
 
 
     <!-- BORDERS -->
-    <div id="borders">
+    <div>
         <svg id="svg-margin" class="no-select no-pointer"><rect/></svg>
 
         <span id="contactate" class="no-select black-highlight text-but">CONTACTO</span>
@@ -485,7 +485,7 @@
             console.log('[Mobile mode]');
         }
 
-        let vh = window.innerHeight * 0.01;
+        const vh = window.innerHeight * 0.01;
         document.documentElement.style.setProperty('--vh', `${vh}px`);
     </script>
 

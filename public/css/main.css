@@ -62,9 +62,7 @@ html, body {
     margin: 0;
 
     flex-shrink: 0;
-    /* min-width: 115%; */
     min-height: 115%;
-    /* max-width: 130%; */
     max-height: 130%;
 
     filter: brightness(70%);
@@ -253,6 +251,7 @@ html, body {
 /* MOBILE DEVICES */
 @media only screen and (max-device-width: 1000px) and (orientation: portrait) {
     #title {
+        position: fixed;
         width: 70vw;
     }
 
@@ -270,6 +269,7 @@ html, body {
     }
 
     #contactate {
+        position: fixed;
         font-size: 1.5rem;
         letter-spacing: 0.075em;
 
@@ -277,6 +277,7 @@ html, body {
         padding-bottom: 4px;
     }
     #visitanos {
+        position: fixed;
         left: -50px;
         top: 45vh;
 
@@ -287,6 +288,7 @@ html, body {
         padding-bottom: 4px;
     }
     #nosotros {
+        position: fixed;
         right: -50px;
         top: 45vh;
 
@@ -297,12 +299,8 @@ html, body {
         padding-bottom: 4px;
     }
 
-    /* #borders {
-        height: 95vh; /* Fallback for browser that don't support custom properties
-        height: calc(var(--vh, 1vh) * 100);
-    } */
-
     #svg-margin rect {
+        position: fixed;
         stroke-width: 6px;
     
         width: calc(100vw - 70px);
