@@ -120,7 +120,7 @@
 
 
     <!-- BORDERS -->
-    <div>
+    <div id="borders">
         <svg id="svg-margin" class="no-select no-pointer"><rect/></svg>
 
         <span id="contactate" class="no-select black-highlight text-but">CONTACTO</span>
@@ -148,7 +148,14 @@
             </video>
             <div id="map"></div>
             <div id="visitus-info">
-                <span id="visitus-info-title" class="wtob">SHOWROOM</span>
+                <span id="visitus-info-title" class="wtob">
+                    <svg id="info-back-button" class="no-select back-button" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    viewBox="0 0 595.28 841.89" style="enable-background:new 0 0 595.28 841.89;" xml:space="preserve">
+                    <line class="stB" x1="240" y1="230.89" x2="90" y2="390"/>
+                    <line class="stB" x1="72.94" y1="372.94" x2="240" y2="540"/>
+                    <line class="stB" x1="90" y1="390" x2="390" y2="390"/>
+                    </svg>
+                SHOWROOM</span>
                 <div class="visitus-column-left">
                     <span class="visitus-info-text wtob">DIRECCION</span>
                     <span class="visitus-info-text wtob">TELEFONO</span>
@@ -180,7 +187,14 @@
     <div>
         <div id="contact-page" class="pages">
             <div id="form">
-                <span id="contact-title" class="wtob">CONTACTO</span>
+                <span id="contact-title" class="wtob">
+                    <svg id="info-back-button" class="no-select back-button" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    viewBox="0 0 595.28 841.89" style="enable-background:new 0 0 595.28 841.89;" xml:space="preserve">
+                    <line class="stB" x1="240" y1="230.89" x2="90" y2="390"/>
+                    <line class="stB" x1="72.94" y1="372.94" x2="240" y2="540"/>
+                    <line class="stB" x1="90" y1="390" x2="390" y2="390"/>
+                    </svg>
+                    CONTACTO</span>
                 <span class="form-question wtob" id="qname">Nombre</span>
                 <input type="text" id="aname" name="aname" class="form-answer btow"><br><br>
                 <span class="form-question wtob" id="qmail">Correo electrónico</span>
@@ -470,6 +484,9 @@
             isMobile = true;
             console.log('[Mobile mode]');
         }
+
+        let vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
     </script>
 
     <!-- Script -->

@@ -297,6 +297,11 @@ html, body {
         padding-bottom: 4px;
     }
 
+    /* #borders {
+        height: 95vh; /* Fallback for browser that don't support custom properties
+        height: calc(var(--vh, 1vh) * 100);
+    } */
+
     #svg-margin rect {
         stroke-width: 6px;
     

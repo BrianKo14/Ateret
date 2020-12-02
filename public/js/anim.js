@@ -182,6 +182,27 @@ function bringInfoPage(name, translateX, translateY) {
             },
         });
     });
+
+    if (isMobile) {
+        $('#contact-title, #visitus-info-title').off('click').click(() => {
+            anime({
+                targets: `#${name}-page`,
+                easing: 'easeOutQuad',
+                duration: 800,
+                translateX: [translateX[1], translateX[0]],
+                translateY: [translateY[1], translateY[0]],
+            });
+            anime({
+                targets: '#modal',
+                easing: 'easeOutQuad',
+                duration: 800,
+                opacity: [1, 0],
+                complete: () => {
+                    $('#modal').css('display', 'none');
+                },
+            });
+        });
+    }
 }
 
 // CHANGE SECTION

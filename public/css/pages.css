@@ -244,3 +244,103 @@
     display: none;
     opacity: 0;
 }
+
+.info-back-button { display: none; }
+
+@media only screen and (max-device-width: 1000px) and (orientation: portrait) {
+    .pages {
+        width: 100vw;
+        height: 95vh; /* Fallback for browser that don't support custom properties*/
+        height: calc(var(--vh, 1vh) * 100);
+
+        left: 0vw;
+        top: 0vh;
+
+        transform: translateX(-150vw);
+        border-radius: 0px;
+    }
+
+    /* VISIT US */
+    .pages video {
+        width: 100%;
+        bottom: -6%;
+    }
+
+    #map {
+        width: 100%;
+        height: 23%;
+        top: 0;
+    }
+
+    .leaflet-control-container {
+        display: none;
+    }
+
+    #visitus-infopic {
+        width: 100%;
+        height: 18%;
+        top: 20%;
+
+        display: none;
+    }
+
+    #visitus-info {
+        width: 100%;
+        top: 26%;
+    }
+
+    #visitus-info-title {
+        top: 5%;
+        font-size: 3rem;
+    }
+
+    .visitus-column-left, .visitus-column-right {
+        top: 19%;
+    }
+
+    .visitus-info-text {
+        font-size: 1.6rem;
+    }
+
+    #info-back-button {
+        display: block;
+        width: 100px;
+        height: 100px;
+
+        top: -30%;
+        left: -30%;
+    }
+
+    /* CONTACT */
+    #contact-info {
+        display: none;
+    }
+
+    .form-question {
+        font-size: 2rem;
+        transform: translateX(2.5vw);
+    }
+
+    .form-answer {
+        width: 80%;
+        font-size: 2rem;
+        padding-left: 15px;
+        transform: translateX(2.5vw);
+    }
+
+    #amsg {
+        width: calc(80% - 8px);
+    }
+
+    #contact-title {
+        font-size: 3rem;
+        left: 50%;
+    }
+
+    #send {
+        left: calc(7% + 80%/2); transform: translateX(-30%);
+        font-size: 2.5rem;
+        background-color: black;
+        color: white;
+    }
+}
