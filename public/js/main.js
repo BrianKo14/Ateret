@@ -165,3 +165,7 @@ var popup = L.popup()
     .setLatLng(coord)
     .setContent("<b>Ateret Cocinas</b><br>Av. Córdoba 5923");
 marker.bindPopup(popup).openPopup();
+
+
+// FIT TEXT
+window.onresize = () => {textFit($('#aboutus-description'))};

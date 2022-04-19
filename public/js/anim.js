@@ -46,7 +46,7 @@ function introAnimation() {
             easing: 'easeInOutSine',
             duration: 1000,
         });
-
+ 
         anime({
             targets: '.fa',
             opacity: 1,

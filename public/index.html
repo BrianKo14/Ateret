@@ -142,8 +142,9 @@
     <!-- Visit us -->
     <div>
         <div id="visitus-page" class="pages">
+            <img id="temp" src="images/HeaderStorePic.png">
             <video playsinline autoplay loop muted defaultMuted>
-                <source src="images/electrodomesticos.mp4" type="video/mp4"/>
+                <!-- <source src="images/electrodomesticos.mp4" type="video/mp4"/> -->
                 <p class="warning">Your browser does not support HTML5 video.</p>
             </video>
             <div id="map"></div>
@@ -167,7 +168,7 @@
                     <!-- <span class="visitus-info-text"><i>Lunes a viernes:</i> 10:00 a 13:00 / 15:00 a 19:00hs.</span>
                     <span class="visitus-info-text"><i>Sábado:</i> 10:00 a 14:00hs.</span> -->
                     <span class="visitus-info-text wtob">Lunes a viernes: 10:00 a 13:00 / 15:00 a 19:00hs.</span>
-                    <span class="visitus-info-text wtob">Sábado: 10:00 a 14:00hs.</span>
+                    <span class="visitus-info-text wtob">Sábado: 10:00 a 13:00hs.</span>
                 </div>
             </div>
             <div id="visitus-infopic">
@@ -179,7 +180,29 @@
     <!-- About us -->
     <div>
         <div id="aboutus-page" class="pages">
-            
+            <div id="aboutus-info">
+                    <img class="no-select no-pointer" id="aboutus-title" src="images/BlackLogo.png">
+                    <span class="wtob" id="aboutus-description">
+                        &nbsp; Somos una empresa que se dedica a la fabricación de muebles de cocina desde hace mas de 20 años, otorgando un alto nivel y calidad en nuestros productos, gracias a la dedicación, capacidad de respuesta y servicio al cliente.
+                        <br>
+                        &nbsp; Trabajamos con una amplia gama de diseños de vanguardia que pueden elegir según sus gustos y comodidad, sumado al confort que les dan las variadas funcionalidades.
+                        <br>
+                        &nbsp; Diseñamos los muebles de cocinas acorde a las necesidades de cada uno con la más amplia gama de soluciones adaptadas a cada estilo de vida, realizando los proyectos en 3D para que puedan apreciar una mejor definición del modelo elegido.
+                        <br>
+                        &nbsp; Nuestra filosofía es proporcionar lo mejor a nuestros clientes, utilizando materiales nobles que perduran con el paso del tiempo, optimizando así su durabilidad y utilidad a largo plazo.
+                        <br>
+                        &nbsp; Brindamos un asesoramiento personalizado para que este espacio se convierta en el corazón de la casa por su estilo y confort.
+                    </span>
+                    <img class="signature no-pointer no-select" src="images/hernan-signature.png">
+            </div> 
+            <video id="left" playsinline autoplay loop muted defaultMuted>
+                <source src="images/aboutus1.mp4" types="video/mp4"/>
+                <p class="warning">Your browser does not support HTML5 video.</p>
+            </video> 
+            <video id="right" playsinline autoplay loop muted defaultMuted>
+                <source src="images/aboutus2.mp4" types="video/mp4"/>
+                <p class="warning">Your browser does not support HTML5 video.</p>
+            </video> 
         </div>
     </div>
 
@@ -278,35 +301,35 @@
                 <div class="dynamic-list">
                     <div class="dl-row">
                         <div class="dl-pic dl-pic-left no-select">
-                            <img src="images/cocinas/termoformado0.jpg">
+                            <img src="images/cocinas/termoformado0.png">
                         </div>
                         <span class="dl-title dl-title-left no-select">Termoformado</span>
                         <span class="dl-subtitle dl-subtitle-left no-select">Revestimiento de PVC</span>
                     </div>
                     <div class="dl-row">
                         <div class="dl-pic dl-pic-right no-select">
-                            <img src="images/cocinas/rauvisio0.jpg">
+                            <img src="images/cocinas/rauvisio0.png">
                         </div>
                         <span class="dl-title dl-title-right no-select">Rauvisio</span>
                         <span class="dl-subtitle dl-subtitle-right no-select">Laminado de alto brillo</span>
                     </div>
                     <div class="dl-row">
                         <div class="dl-pic dl-pic-left no-select">
-                            <img src="images/cocinas/laqueado0.jpg" style="width: 120%;">
+                            <img src="images/cocinas/laqueado0.png" style="width: 100%;">
                         </div>
                         <span class="dl-title dl-title-left no-select" style="top: 46%;">Laqueado</span>
                         <span class="dl-subtitle dl-subtitle-left no-select" style="top: 66%;">Pintados con laca poliuretanica</span>
                     </div>
                     <div class="dl-row">
                         <div class="dl-pic dl-pic-right no-select">
-                            <img src="images/cocinas/melaminia0.jpg">
+                            <img src="images/cocinas/melaminia0.png">
                         </div>
                         <span class="dl-title dl-title-right no-select" style="top: 46%;">Melamina</span>
                         <span class="dl-subtitle dl-subtitle-right no-select" style="top: 66%;">Placas recubiertas en melamina</span>
                     </div>
                     <div class="dl-row">
                         <div class="dl-pic dl-pic-left no-select">
-                            <img src="images/cocinas/vidrio0.jpg">
+                            <img src="images/cocinas/vidrio0.png">
                         </div>
                         <span class="dl-title dl-title-left no-select" style="top: 46%;">Vidrio</span>
                         <span class="dl-subtitle dl-subtitle-left no-select" style="top: 66%; left: 50%;">Placa de vidrio montado sobre bastidor de aluminio</span>
@@ -355,28 +378,37 @@
 
                 <div class="dynamic-list">
                     <div class="dl-row">
-                        <div class="dl-pic dl-pic-left no-select"></div>
+                        <div class="dl-pic dl-pic-left no-select">
+                            <img src="images/mesadas/neolith0.jpg">
+                        </div>
                         <div class="dl-title dl-title-left no-select logo-title">Mesada de <img id="neolith-logo" class="brand-logo" src="images/neolith.png"></div>
                     </div>
                     <div class="dl-row">
-                        <div class="dl-pic dl-pic-right no-select"></div>
+                        <div class="dl-pic dl-pic-right no-select">
+                            <img src="images/mesadas/silestone0.webp">
+                        </div>
                         <span class="dl-title dl-title-right no-select logo-title" style="right: 45%;">Mesada de <img id="silestone-logo" class="brand-logo" src="images/silestone.png"></span>
                     </div>
                     <div class="dl-row">
-                        <div class="dl-pic dl-pic-left no-select"></div>
+                        <div class="dl-pic dl-pic-left no-select">
+                            <img src="images/mesadas/granito0.jpeg">
+                        </div>
                         <span class="dl-title dl-title-left no-select">Mesada de granito</span>
                     </div>
                 </div>
 
                 <div class="dynamic-slideshow">
                     <div class="ds-row">
-                        0
+                        <img class="ds-row-bigpic" src="images/mesadas/neolith1.jpeg">
+                        <span class="ds-row-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
                     </div>
                     <div class="ds-row">
-                        1
+                        <img class="ds-row-bigpic" src="images/mesadas/silestone1.jpeg">
+                        <span class="ds-row-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
                     </div>
                     <div class="ds-row">
-                        2
+                        <img class="ds-row-bigpic" src="images/mesadas/granito1.jpeg">
+                        <span class="ds-row-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
                     </div>
                 </div>
 
@@ -397,35 +429,43 @@
 
                 <div class="dynamic-list">
                     <div class="dl-row">
-                        <div class="dl-pic dl-pic-left no-select"></div>
-                        <span class="dl-title dl-title-left no-select">Horno, Anafe y Campana</span>
+                        <div class="dl-pic dl-pic-left no-select">
+                            <img src="images/electrodomesticos/hac0.jpeg">
+                        </div>
+                        <span class="dl-title dl-title-left no-select">Horno, Anafe y Campana <img id="cata-logo" class="brand-logo" src="images/cata.png"></span>
                     </div>
                     <div class="dl-row">
-                        <div class="dl-pic dl-pic-right no-select"></div>
-                        <span class="dl-title dl-title-right no-select">Horno y Purificador</span>
+                        <div class="dl-pic dl-pic-right no-select">
+                            <img src="images/electrodomesticos/hp0.jpeg">
+                        </div>
+                        <span class="dl-title dl-title-right no-select">Horno y Purificador <img id="cata-logo" class="brand-logo" src="images/cata.png"></span>
                     </div>
                     <div class="dl-row">
-                        <div class="dl-pic dl-pic-left no-select"></div>
-                        <span class="dl-title dl-title-left no-select">Horno y Anafe Vitrocerámico</span>
+                        <div class="dl-pic dl-pic-left no-select">
+                            <img src="images/electrodomesticos/hav0.jpeg">
+                        </div>
+                        <span class="dl-title dl-title-left no-select">Horno y Anafe Vitrocerámico <img id="cata-logo" class="brand-logo" src="images/cata.png"></span>
                     </div>
                     <div class="dl-row">
-                        <div class="dl-pic dl-pic-right no-select"></div>
-                        <span class="dl-title dl-title-right no-select">Horno</span>
+                        <div class="dl-pic dl-pic-right no-select">
+                            <img src="images/electrodomesticos/h0.jpeg">
+                        </div>
+                        <span class="dl-title dl-title-right no-select">Horno <img id="cata-logo" class="brand-logo" src="images/cata.png"></span>
                     </div>
                 </div>
 
                 <div class="dynamic-slideshow">
                     <div class="ds-row">
-                        0
+                        <img class="ds-row-bigpic" src="images/electrodomesticos/hac1.jpeg">
                     </div>
                     <div class="ds-row">
-                        1
+                        <img class="ds-row-bigpic" src="images/electrodomesticos/hp1.jpeg">
                     </div>
                     <div class="ds-row">
-                        2
+                        <img class="ds-row-bigpic" src="images/electrodomesticos/hav1.jpeg">
                     </div>
                     <div class="ds-row">
-                        3
+                        <img class="ds-row-bigpic" src="images/electrodomesticos/h1.jpeg">
                     </div>
                 </div>
 
@@ -446,21 +486,27 @@
 
                 <div class="dynamic-list">
                     <div class="dl-row">
-                        <div class="dl-pic dl-pic-left no-select"></div>
+                        <div class="dl-pic dl-pic-left no-select">
+                            <img src="images/placard/placard0.jpeg">
+                        </div>
                         <span class="dl-title dl-title-left no-select">Interior de Placard</span>
                     </div>
                     <div class="dl-row">
-                        <div class="dl-pic dl-pic-right no-select"></div>
+                        <div class="dl-pic dl-pic-right no-select">
+                            <img src="images/placard/vestidor0.jpeg">
+                        </div>
                         <span class="dl-title dl-title-right no-select">Vestidor</span>
                     </div>
                 </div>
 
                 <div class="dynamic-slideshow">
                     <div class="ds-row">
-                        0
+                        <img class="ds-row-bigpic" src="images/placard/placard1.png">
+                        <span class="ds-row-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
                     </div>
                     <div class="ds-row">
-                        1
+                        <img class="ds-row-bigpic" src="images/placard/vestidor1.webp">
+                        <span class="ds-row-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
                     </div>
                 </div>
             </div>
@@ -490,6 +536,8 @@
     </script>
 
     <!-- Script -->
+    <script src="js/textFit.js"></script>
+
     <script src="js/anim.js"></script>
     <script src="js/list.js"></script>
     <script src="js/main.js"></script>

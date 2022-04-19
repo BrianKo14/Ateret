@@ -6,6 +6,7 @@ const nodemailer = require('nodemailer');
 
 // Server static files
 app.listen(process.env.PORT || 3000, () => {
+    console.log('Serving in port ' + (process.env.PORT || 3000) + '...');
     app.use(express.static('public'));
 });
 

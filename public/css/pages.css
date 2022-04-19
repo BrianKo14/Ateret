@@ -149,7 +149,7 @@
 
 
 /* VISIT US */
-.pages video {
+.pages video, #temp {
     position: absolute;
     width: 55%;
 }
@@ -231,6 +231,57 @@
 .visitus-column-right .visitus-info-text {
     font-weight: normal;
 }
+
+
+/* ABOUT US */
+#aboutus-title {
+    position: absolute;
+
+    width: 15%;
+    left: 50%; transform: translateX(-50%);
+    top: 10%;
+}
+
+#aboutus-description {
+    position: absolute;
+
+    font-family: 'Roboto', sans-serif;
+    text-align: justify;
+    color: black;
+
+    width: 40%;
+    height: 57%;
+    left: 50%; transform: translateX(-50%);
+    top: 26%;
+}
+
+#aboutus-description br {
+    display: block; 
+    content: "";
+    margin-top: 0.7em;
+}
+
+#aboutus-info .signature {
+    position: absolute;
+    width: 9%;
+    right: 35%;
+    bottom: 9%;
+}
+
+#aboutus-page video {
+    position: absolute;
+
+    background-color: black;
+    object-fit: cover;
+    width: 27%; 
+    height: 110%;
+}
+
+#aboutus-page #right {
+    right: 0;
+}
+
+
 
 #modal {
     position: fixed;
